@@ -1,0 +1,421 @@
+@charset "UTF-8";
+body, div, ul, li, dl, dd, dt, h3, h4 {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: #eee;
+}
+
+select {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  padding: 0 5px;
+}
+a:hover {
+  color: #f00;
+  text-decoration: underline;
+}
+
+body {
+  font-size: 100%;
+  font-family: "微软雅黑";
+}
+
+.back-logo, .func-tab .path, .aside-nav, .main {
+  float: left;
+}
+
+.bs-tit, .func-tab .operate, .table-op {
+  float: right;
+}
+
+.bs-top, .func-tab, .main-box {
+  *zoom: 1;
+}
+.bs-top:after, .func-tab:after, .main-box:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.inner-center {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bs-top {
+  height: 60px;
+  background: #333;
+  padding: 0 10px;
+}
+
+.bs-tit {
+  font-size: 22px;
+  color: #fff;
+  line-height: 60px;
+}
+
+.func-tab {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 30px;
+  background: #eee;
+}
+.func-tab .m-name {
+  padding-right: 10px;
+}
+.func-tab .path {
+  width: 300px;
+  margin-left: -80px;
+}
+.func-tab .operate a {
+  padding: 0 18px;
+}
+.func-tab .operate .home {
+  background: url(../images/icon_b_home.png) no-repeat left center;
+}
+.func-tab .operate .advance {
+  background: url(../images/icon_b_advance.png) no-repeat left center;
+}
+.func-tab .operate .back {
+  background: url(../images/icon_b_back.png) no-repeat left center;
+}
+.func-tab .operate .refresh {
+  background: url(../images/icon_b_refresh.png) no-repeat left center;
+}
+.func-tab .operate .out {
+  background: url(../images/icon_b_out.png) no-repeat left center;
+}
+
+.aside-nav {
+  width: 200px;
+}
+
+.nav-tit {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 18px;
+  line-height: 30px;
+  background: #ccc;
+  border-right: 1px solid #999;
+}
+
+.nav-list {
+  min-height: 600px;
+  padding: 10px 8px 200px 8px;
+  background: #999;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.8;
+}
+.nav-list .list-item {
+  margin-top: 5px;
+}
+.nav-list h3 {
+  font-size: 16px;
+  cursor: pointer;
+}
+.nav-list dl {
+  display: none;
+}
+.nav-list dd {
+  padding-left: 30px;
+}
+.nav-list span {
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+}
+.nav-list a {
+  color: #fff;
+}
+
+.main-box {
+  border: 1px solid #aaa;
+  border-top: none;
+}
+
+.main .nav-tit {
+  width: 998px;
+  border-right: none;
+}
+
+.table-op-box {
+  padding: 15px;
+}
+
+.table-op-top {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.table-op-top .add {
+  float: left;
+}
+.table-op-top .add a {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.table-op input {
+  width: 150px;
+  height: 30px;
+  padding: 10px;
+}
+.table-op .select-box {
+  padding: 5px 8px 7px;
+  background: #eee;
+  margin-right: 20px;
+}
+
+table {
+  font-size: 14px;
+  border-collapse: collapse;
+}
+table caption {
+  font-size: 20px;
+  margin: 20px 0;
+}
+table td, table th {
+  border: 1px solid #ccc;
+}
+table th {
+  height: 30px;
+  background: #eee;
+}
+table td {
+  height: 35px;
+  padding: 0 5px;
+  text-align: center;
+}
+table .pd-list-che {
+  margin-right: 8px;
+}
+table label {
+  vertical-align: middle;
+}
+
+.pd-manage {
+  width: 968px;
+}
+.pd-manage tr td:last-child {
+  text-align: center;
+}
+
+.pd-list-op {
+  padding: 4px 16px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/*-------------------------------------------
+login page
+--------------------------------------------*/
+.login-top {
+  width: 100%;
+  height: 85px;
+  background: #1d7ad9;
+}
+.login-top .logo {
+  width: 235px;
+  margin: 0 auto;
+  font-size: 22px;
+  line-height: 85px;
+  color: #fff;
+}
+.login-top .logo a {
+  float: left;
+  height: 85px;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+.login-form {
+  width: 460px;
+  border: 1px solid #ccc;
+  margin: 20px auto 120px auto;
+  font-size: 14px;
+  padding-top: 40px;
+  padding-left: 80px;
+}
+.login-form .user, .login-form .password, .login-form .vertify {
+  width: 310px;
+  height: 35px;
+  border: 1px solid #ccc;
+  padding: 0 5px;
+}
+.login-form .vertify {
+  background: #fff;
+}
+.login-form .user {
+  background: url(../images/icon_b_user.png) no-repeat 275px center;
+}
+.login-form .password {
+  background: url(../images/icon_b_password.png) no-repeat 275px center;
+}
+.login-form .vertify-img {
+  margin-bottom: 10px;
+}
+.login-form > div {
+  margin-bottom: 15px;
+}
+.login-form .submit {
+  width: 310px;
+  height: 35px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 35px;
+  color: #606060;
+  text-align: center;
+  background: #d0d0d0;
+  cursor: pointer;
+}
+.login-form .login-tip {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.login-form .more {
+  display: inline-block;
+  width: 40px;
+  height: 12px;
+  background: url(../images/pd-sort/icon_more.png) no-repeat 25px center;
+}
+
+/*footer----------------------------------*/
+footer {
+  width: 100%;
+  height: 222px;
+  background: #d4d4d4;
+  text-align: center;
+}
+footer p {
+  font: 12px "宋体";
+  line-height: 2;
+}
+footer .footer-nav {
+  padding-top: 55px;
+}
+footer .copyright {
+  padding-bottom: 40px;
+}
+footer a {
+  margin-left: 10px;
+}
+footer a:hover {
+  color: #ff8c00;
+}
+
+.admin-add input, .user-add input {
+  border: none;
+  outline: none;
+  background: #fff;
+}
+.admin-add table, .user-add table {
+  border-collapse: collapse;
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid #999;
+  background: #ccc;
+}
+.admin-add caption, .user-add caption {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.admin-add td, .user-add td {
+  height: 35px;
+  padding: 10px 0;
+}
+.admin-add .user, .admin-add .password, .admin-add .email, .user-add .user, .user-add .password, .user-add .email {
+  width: 180px;
+  margin-left: 5px;
+  padding: 0 5px;
+  height: 22px;
+}
+.admin-add input[type='text'], .user-add input[type='text'] {
+  width: 180px;
+  margin-left: 5px;
+  padding: 0 5px;
+  height: 22px;
+}
+.admin-add .submit, .user-add .submit {
+  width: 60px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pro-add .pro-table {
+  width: 800px;
+}
+.pro-add .pro-table th {
+  text-align: right;
+  background: #ccc;
+  border: 1px solid #000;
+}
+.pro-add .pro-table td {
+  border: 1px solid #000;
+  text-align: left;
+}
+.pro-add .pro-table tr:last-child td {
+  text-align: center;
+}
+.pro-add .attachItem {
+  padding: 3px 5px;
+}
+
+/*页码导航条--------------------------------*/
+.page {
+  width: 550px;
+  margin: 40px auto;
+  font-size: 12px;
+}
+.page .page-form {
+  display: inline-block;
+}
+.page .page-num, .page .page-btn {
+  background: #fff;
+  border: 1px solid #999;
+  cursor: pointer;
+  padding: 3px 6px;
+}
+.page .forbid {
+  opacity: .3;
+}
+.page .forbid:hover {
+  color: #333;
+  text-decoration: none;
+}
+.page a {
+  display: inline-block;
+  margin: 0 4px;
+  padding: 3px 6px;
+  border: 1px solid #999;
+}
+
+/*# sourceMappingURL=backstage.css.map */
