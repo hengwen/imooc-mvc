@@ -59,6 +59,18 @@
 				return false;
 			}
 		}
+		/**
+		 * 后台删除操作
+		 */
+		public function delAdmin($table,$id){
+			$where = "`id`=".$id;
+			if(isset($id)&&isset($table)){
+				$result = DB::delete($table,$where);
+				return $result;
+			}else{
+				return false;
+			}
+		}
 
 	}
 

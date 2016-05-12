@@ -81,8 +81,7 @@
 		/**
 		 * 获得后台导航点击后显示的列表或添加表单路径和数据库表名称
 		 */
-		public function getTablePath(){
-			$tab = $_GET['tab'];
+		public function getTablePath($tab){
 			if ($tab == 1) {
 					$this->table = 'imooc_pro';
 					$this->listPath = 'proList.html';
@@ -109,7 +108,8 @@
 		 * 显示添加操作的表单页面
 		 */
 		public function showAddForm(){
-			$this->getTablePath();
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
 			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth));
 			VIEW::display('admin/index.html');
 		}
@@ -120,7 +120,8 @@
 		 */
 		public function showList(){
 			$p = $_GET['p'];
-			$this->getTablePath();
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
 			$list = M('list');
 			$result = $list->getList($this->table,$p);
 			$page = $list->page();
@@ -135,17 +136,19 @@
 		 * 后台添加操作
 		 */
 		public function doAdd(){
-			$this->getTablePath();
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
 			$adminadd = M('admin');
 			$result = $adminadd->adminAdd($this->table);
 			if ($result) {
-				$this->showmessage("添加成功！","admin.php?controller=admin&method=showList&tab=4&p=1");
+				$this->showmessage("添加成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 			}else{
-				$this->showmessage('添加失败！','admin.php?controller=admin&method=showAddForm&tab=4');
+				$this->showmessage('添加失败！',"admin.php?controller=admin&method=showAddForm&tab={$tab}");
 			}
 		}
 		public function editForm(){
-			$this->getTablePath();
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
 			$id = $_GET['id'];
 			$adminEditShow = M('admin');
 			$result = $adminEditShow->adminEditShow($this->table,$id);
@@ -155,7 +158,7 @@
 				VIEW::assign(array('auth'=>$this->auth,'path'=>$this->editPath));
 				VIEW::display('admin/index.html');
 			}else{
-				$this->showmessage("显示失败","admin.php?controller=admin&method=showList&tab=4&p=1");
+				$this->showmessage("显示失败","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 			}
 			
 		}
@@ -163,16 +166,31 @@
 		 * 编辑管理员信息
 		 */
 		public function doEdit(){
-
-			$this->getTablePath();
 			$id = $_GET['id'];
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
 			$edit = M('admin');
 			if($result= $edit->adminEdit($this->table,$id)){
-				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab=4&p=1");
+				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 			}else{
-				$this->showmessage("编辑失败！","admin.php?controller=admin&method=showList&tab=4&p=1");
+				$this->showmessage("编辑失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 				}
 			}
+
+		/**
+		 * 删除
+		 */
+		public function doDel(){
+			$id = $_GET['id'];
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
+			$del = M('admin');
+			if($result= $del->delAdmin($this->table,$id)){
+				$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+			}else{
+				$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+			}
+		}
 	}
 
 ?>
