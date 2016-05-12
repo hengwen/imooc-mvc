@@ -27,7 +27,7 @@
 		$currentdir = dirname(dirname(dirname(__FILE__)));
 		require_once($currentdir.'/libs/Model/'.$name.'Model.class.php');
 		$model = $name.'Model';
-		$obj = new $model;
+		$obj = new $model();
 		return $obj;
 	}
 

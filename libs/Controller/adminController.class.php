@@ -1,8 +1,9 @@
 <?php
 	class adminController{
 		protected $auth; //保存当前登录的管理员
-	
-
+		protected $listPath;  //保存后台点击左侧导航列表相关选项在右侧显示的页面文件名称
+		protected $addPath;    //保存后台点击左侧导航添加相关选项在右侧显示的页面文件名称
+		protected $table;  //保存要在后台显示的列表数据库表名
 		public function __construct(){
 			//session_start();
 			if(!(isset($_SESSION['auth']))&&(PC::$method!='login')){
@@ -77,7 +78,69 @@
 				echo "<script>alert('$mes')</script>";
 				echo "<script>window.location.href='$url'</script>";
 		}
-		
+		/**
+		 * 获得后台导航点击后显示的列表或添加表单路径和数据库表名称
+		 */
+		public function getTablePath(){
+			$tab = $_GET['tab'];
+			if ($tab == 1) {
+					$this->table = 'imooc_pro';
+					$this->listPath = 'proList.html';
+					$this->addPath = 'proAddForm.html';
+				}elseif($tab == 2){
+					$this->table = 'imooc_cate';
+					$this->listPath = 'cateList.html';
+					$this->addPath = 'cateAddForm.html';
+				}elseif($tab == 3){
+					$this->table = 'imooc_user';
+					$this->listPath = 'userList.html';
+					$this->laddPath = 'userAddForm.html';
+				}elseif($tab == 4){
+					$this->table = 'imooc_admin';
+					$this->listPath = 'adminList.html';
+					$this->addPath = 'adminAddForm.html';
+				}
+		}
+		/**
+		 * 显示添加操作的表单页面
+		 */
+		public function showAddForm(){
+			$this->getTablePath();
+			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth));
+			VIEW::display('admin/index.html');
+		}
+
+	
+		/**
+		 * 显示列表以及页码
+		 */
+		public function showList(){
+			$p = $_GET['p'];
+			$this->getTablePath();
+			$list = M('list');
+			$result = $list->getList($this->table,$p);
+			$page = $list->page();
+			if ($result) {
+				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>$this->listPath));
+				VIEW::display('admin/index.html');
+			}else{
+				$this->showmessage("显示列表失败","admin.php?controller=admin&method=index");
+			}
+		}
+		/**
+		 * 后台添加操作
+		 */
+		public function doAdd(){
+			$this->getTablePath();
+			$adminadd = M('admin');
+			$result = $adminadd->adminAdd($this->table);
+			if ($result) {
+				$this->showmessage("添加成功！","admin.php?controller=admin&method=showList&tab=4&p=1");
+			}else{
+				$this->showmessage('添加失败！','admin.php?controller=admin&method=showAddForm&tab=4');
+			}
+		}
+
 	}
 
 ?>
