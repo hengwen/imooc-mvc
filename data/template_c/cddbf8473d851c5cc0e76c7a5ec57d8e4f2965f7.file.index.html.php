@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 10:41:10
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 13:46:52
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:20777256525734294fb721f2-84638476%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463041204,
+      1 => 1463053611,
       2 => 'file',
     ),
   ),
@@ -70,7 +70,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<h3 onclick="show('menu2','change2')"><span id="change2">+</span>分类管理</h3>
 						<dl id="menu2">
 							<dd><a href="admin.php?controller=admin&method=showAddForm&tab=2" >添加分类</a></dd>
-							<dd><a href="admin.php?controller=admin&method=showList&tab2&p=1">分类列表</a></dd>	
+							<dd><a href="admin.php?controller=admin&method=showList&tab=2&p=1">分类列表</a></dd>	
 						</dl>
 					</li>
 					<li class="list-item">

@@ -1,0 +1,20 @@
+<div class="table-op-top">
+						<div class="add">
+							<a href="admin.php?controller=admin&method=showAddForm&tab=2"  >添加</a>
+						</div>
+					</div>
+					<table class="pd-manage">
+						<tr>
+							<th>编号</th>
+							<th>分类名称</th>
+							<th>操作</th>
+						</tr>
+						{foreach item=list from=$result}
+							<tr>
+								<td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label>{$list['id']}</td>
+								<td>{$list['cName']}</td>
+								<td><input type="button" class="pd-list-op" value="修改"  id="edit-btn" data= {$list['id']} tab="2"	> <input type="button" class="pd-list-op" value="删除" data = {$list['id']} tab="2"></td>
+							</tr>
+						{/foreach}
+					</table>
+					<div class="page">{$page}</div>
