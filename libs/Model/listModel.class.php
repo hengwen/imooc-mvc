@@ -28,7 +28,7 @@ class listModel{
 
 	public function __construct(){
 		//$this->table = $table;
-		$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&table=".$this->table."&p=";
+		
 		$this->page_banner = "";
 		//$this->page = $p;
 		$this->page_size =3;
@@ -52,6 +52,7 @@ class listModel{
 			$this->start = ($this->page-1)*$this->page_size;
 			$this->page_total = ceil($this->total/$this->page_size);
 			$this->page_end = $this->page_total;
+			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab']."&p=";
 			$sql = "select * from ".$table." order by id asc LIMIT ".$this->start.",".$this->page_size;
 			$result = DB::fetchAll($sql);
 			return $result;

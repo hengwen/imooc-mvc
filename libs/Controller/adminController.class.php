@@ -87,18 +87,22 @@
 					$this->table = 'imooc_pro';
 					$this->listPath = 'proList.html';
 					$this->addPath = 'proAddForm.html';
+					$this->editPath = 'proEditForm.html';
 				}elseif($tab == 2){
 					$this->table = 'imooc_cate';
 					$this->listPath = 'cateList.html';
 					$this->addPath = 'cateAddForm.html';
+					$this->editPath = 'cateEditForm.html';
 				}elseif($tab == 3){
 					$this->table = 'imooc_user';
 					$this->listPath = 'userList.html';
 					$this->laddPath = 'userAddForm.html';
+					$this->editPath = 'userEditForm.html';
 				}elseif($tab == 4){
 					$this->table = 'imooc_admin';
 					$this->listPath = 'adminList.html';
 					$this->addPath = 'adminAddForm.html';
+					$this->editPath = 'adminEditForm.html';
 				}
 		}
 		/**
@@ -140,7 +144,35 @@
 				$this->showmessage('添加失败！','admin.php?controller=admin&method=showAddForm&tab=4');
 			}
 		}
+		public function editForm(){
+			$this->getTablePath();
+			$id = $_GET['id'];
+			$adminEditShow = M('admin');
+			$result = $adminEditShow->adminEditShow($this->table,$id);
 
+			if($result){
+				VIEW::assign($result);
+				VIEW::assign(array('auth'=>$this->auth,'path'=>$this->editPath));
+				VIEW::display('admin/index.html');
+			}else{
+				$this->showmessage("显示失败","admin.php?controller=admin&method=showList&tab=4&p=1");
+			}
+			
+		}
+		/**
+		 * 编辑管理员信息
+		 */
+		public function doEdit(){
+
+			$this->getTablePath();
+			$id = $_GET['id'];
+			$edit = M('admin');
+			if($result= $edit->adminEdit($this->table,$id)){
+				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab=4&p=1");
+			}else{
+				$this->showmessage("编辑失败！","admin.php?controller=admin&method=showList&tab=4&p=1");
+				}
+			}
 	}
 
 ?>

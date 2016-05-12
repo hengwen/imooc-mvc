@@ -1,0 +1,22 @@
+
+<form action="admin.php?controller=admin&method=doEdit&tab=4&id={$id}" method="post" class="admin-add">
+	<table  width="400" border="1" bgcolor="#ccc">
+	<caption>编辑管理员</caption>
+		<tr>
+			<td align="right">管理员账号：</td>
+			<td><input type="text" class="user" name="username" id="username" placeholder="{$username}"></td>
+		</tr>
+		<tr>
+			<td align="right"> 管理员密码：</td>
+			<td><input type="password" class="password" name="password" placeholder="******"></td>
+		</tr>
+		<tr>
+			<td align="right"> 管理员邮箱：</td>
+			<td><input type="email" class="email" name="email" placeholder="{$email}"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" value="编辑"></td>
+		</tr>
+	</table>
+</form>
+

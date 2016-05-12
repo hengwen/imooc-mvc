@@ -32,7 +32,33 @@
 			
 		}
 
-		
+		/**
+		 * 获得需要修改的管理员旧值
+		 */
+		public function adminEditShow($table,$id){
+			$sql = "select * from ".$table." where id=".$id;
+			if ($rs = DB::fetchOne($sql)) {
+				return $rs;
+			}else{
+				return false;
+			}
+		}
+		/**
+		 * 修改管理员信息
+		 */
+		public function adminEdit($table,$id){
+			$where = '`id`='.$id;
+			$arr = $_POST;
+			if(array_key_exists('password', $arr)){
+				$arr['password'] = md5($arr['password']);
+			}
+			if(isset($id)&&isset($table)&&isset($where)){
+				$res= DB::update($table,$arr,$where);
+				return $res;
+			}else{
+				return false;
+			}
+		}
 
 	}
 

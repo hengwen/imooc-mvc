@@ -15,7 +15,7 @@
 			<td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label>{$list['id']}</td>
 			<td>{$list['username']}</td>
 			<td>{$list['email']}</td>
-			<td><input type="button" class="pd-list-op" value="修改"  id="edit-btn" 	> <input type="button" class="pd-list-op" value="删除"  ></td>
+			<td><input type="button" class="pd-list-op" value="修改" data={$list['id']} tab="4"  id="edit-btn" 	> <input type="button" class="pd-list-op" value="删除" data={$list['id']} tab="4" ></td>
 		</tr>
 	{/foreach}
 </table>
