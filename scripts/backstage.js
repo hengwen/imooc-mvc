@@ -18,6 +18,17 @@ $(document).ready(function() {
 		}
 	});
 	
+	//添加用户时获得当前日期并传递给表单中的input
+	var time = new Date();
+	var now = time.toLocaleDateString(); 
+	$('#regTime').val(now);
+					
+	//获取需要修改的用户头像和性别值
+		var face = $('#edit-face').val();
+		var sex = $('#edit-sex').val();
+		//将用户原来的头像和性别显示
+		$("input[name='face'][value='"+face+"']").attr('checked','checked');
+		$("input[name='sex'][value='"+sex+"']").attr('checked','checked');			
 });
 
 	

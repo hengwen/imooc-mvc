@@ -95,7 +95,7 @@
 				}elseif($tab == 3){
 					$this->table = 'imooc_user';
 					$this->listPath = 'userList.html';
-					$this->laddPath = 'userAddForm.html';
+					$this->addPath = 'userAddForm.html';
 					$this->editPath = 'userEditForm.html';
 				}elseif($tab == 4){
 					$this->table = 'imooc_admin';
