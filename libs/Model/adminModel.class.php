@@ -179,14 +179,31 @@
 				return $res = 2;  //代表商品插入失败！
 			}
 			
-			// var_dump($res);
-			// var_dump($resInsert);
-			// if (is_array($res)&&$resInsert) {
-			// 	return true;
-			// }else{
-			// 	return $res;
-			// }
-
+		}
+		
+		/**
+		 * 编辑商品
+		 */
+		public function proEdit($id,$filesInfo){
+			$resUpdate = $this->adminEdit("imooc_pro",$id);
+			if ($resUpdate) {  //如果商品基本信息插入成功则进行图片的上传
+				if (!empty($filesInfo)) {
+					$res = $this->doUpload($filesInfo);
+					if (is_array($res)) {
+						foreach ($res as $fileUrl) {
+							$arr['pId'] = $id;
+							$arr['albumPath'] = $fileUrl;
+							$this->doAblumInsert("imooc_album",$arr);
+						}
+						return $allResult = 1;  //代表商品信息修改以及图片都上传成功
+					}else{
+						return "商品插入成功，图片上传失败，原因：".$res;
+					}
+				}
+				return $proInfo = 3; //代表商品信息修改成功，但没有上传新图片
+			}else{
+				return $res = 2;  //代表商品插入失败！
+			}
 		}
 
 

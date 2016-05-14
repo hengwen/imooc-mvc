@@ -163,9 +163,14 @@
 			$this->getTablePath($tab);
 			$id = $_GET['id'];
 			$adminEditShow = M('admin');
+			if ($table="imooc_pro") {
+				$cate = $adminEditShow->getCates();
+			}
 			$result = $adminEditShow->adminEditShow($this->table,$id);
-
 			if($result){
+				if ($cate) {
+					VIEW::assign(array("cates"=>$cate));
+				}
 				VIEW::assign($result);
 				VIEW::assign(array('auth'=>$this->auth,'path'=>$this->editPath));
 				VIEW::display('admin/index.html');
@@ -180,7 +185,7 @@
 		public function doEdit(){
 			$id = $_GET['id'];
 			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
+			$this->getTablePath();
 			$edit = M('admin');
 			if($result= $edit->adminEdit($this->table,$id)){
 				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
@@ -231,10 +236,28 @@
 			}else{
 				$this->showmessage($res,"admin.php?controller=admin&method=showList&tab=1&p=1");
 			}
-			
-			
-			
 		}
+		/**
+		 * 编辑商品
+		 */
+			public function editPro(){
+
+				$id = $_GET['id'];
+				$edit = M('admin');
+				$res = $edit->proEdit($id,$_FILES);
+				if ($res === 1) {  
+					$this->showmessage("商品信息修改成功以及图片上传成功！！","admin.php?controller=admin&method=showList&tab=1&p=1");
+				}elseif ($res === 2) {
+					$this->showmessage("商品基本信息添加失败！","admin.php?controller=admin&method=showProAddForm&tab=1");
+				}elseif($res === 3){
+					$this->showmessage("商品信息修改成功！！","admin.php?controller=admin&method=showList&tab=1&p=1");
+				}else{
+					$this->showmessage($res,"admin.php?controller=admin&method=showList&tab=1&p=1");
+				}
+			}
+			
+			
+		
 
 	}
 

@@ -1,0 +1,68 @@
+
+<form class="admin-add pro-add" action="admin.php?controller=admin&method=editPro&tab=1&id={$id}" method="post" enctype="multipart/form-data" >
+	<table  width="400" border="1" bgcolor="#ccc" class="pro-table">
+	<caption>编辑商品</caption>
+		<tr>
+			<th width="20%">商品名称：</th>
+			<td><input type="text"  name="pName" id="pName" placeholder="{$pName}"></td>
+		</tr>
+		<tr>
+			<th >商品分类：</th>
+			<td>
+				<select name="cId" class="select-cate">
+					{foreach item=cate from=$cates}
+						{if {$cate.id} eq $cId} 
+							<option value="{$cate.id}" selected="selected">{$cate.cName}</option>
+						{else}
+							<option value="{$cate.id}">{$cate.cName}</option>
+						{/if}
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th > 商品货号：</th>
+			<td><input type="text"  name="pSn" placeholder="{$pSn}"></td>
+		</tr>
+		<tr>
+			<th > 商品库存：</th>
+			<td><input type="text" name="pNum" placeholder="{$pNum}"></td>
+		</tr>
+		<tr>
+			<th > 市场价格：</th>
+			<td><input type="text" name="mPrice" placeholder="{$mPrice}"></td>
+		</tr>
+		<tr>
+			<th > 慕课价格：</th>
+			<td><input type="text" name="iPrice" placeholder="{$iPrice}"></td>
+		</tr>
+		<tr>
+			<th> 是否上架：</th>
+			<td><input type="text" name="isShow" placeholder="{$isShow}"></td>
+		</tr>
+		<tr>
+			<th> 是否热卖：</th>
+			<td><input type="text" name="isHot" placeholder="{$isHot}"></td>
+		</tr>
+		<tr>
+			<th > 商品描述：</th>
+			<td>
+				<textarea name="pDesc" id="editor_id" style="width:100%; height: 150px;" >{$pDesc}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<th align="right"> 商品图像：</th>
+			<td>
+				<a href="javascript:void(0)" id="selectFileBtn">添加附件</a>
+				<div id="attachList" class="clear"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" value="编辑" class="submit"></td>
+		</tr>
+	</table>
+	<input type="hidden" name="pubTime" value="{$pubTime}">
+</form>
+
+
+	
