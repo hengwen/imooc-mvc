@@ -125,12 +125,16 @@
 			$list = M('list');
 			if ($tab==1) {
 				$result = $list->getProList($this->table,$p);
+				$getProImage = $list->getProImage();  //所有商品图片以及对应的商品id
 			}else{
 				$result = $list->getList($this->table,$p);
 			}
 			
 			$page = $list->page();
 			if ($result) {
+				if ($getProImage) {
+					VIEW::assign(array('proImage'=>$getProImage));
+				}
 				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>$this->listPath));
 				VIEW::display('admin/index.html');
 			}else{
@@ -151,6 +155,9 @@
 				$this->showmessage('添加失败！',"admin.php?controller=admin&method=showAddForm&tab={$tab}");
 			}
 		}
+		/**
+		 * 后台编辑操作
+		 */
 		public function editForm(){
 			$tab = $_GET['tab'];
 			$this->getTablePath($tab);
@@ -168,7 +175,7 @@
 			
 		}
 		/**
-		 * 编辑管理员信息
+		 * 编辑信息
 		 */
 		public function doEdit(){
 			$id = $_GET['id'];

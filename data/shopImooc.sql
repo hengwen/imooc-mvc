@@ -27,7 +27,6 @@ CREATE TABLE `imooc_pro`(
 `mPrice` decimal(10,2) not null,
 `iPrice` decimal(10,2) not null,
 `pDesc` mediumtext,
-`pImg` varchar(50) not null,
 `pubTime` int unsigned not null,
 `isShow` tinyint(1) not null default 1,
 `isHot` tinyint(1) not null default 0,
@@ -52,7 +51,7 @@ DROP TABLE IF EXISTS `imooc_album`;
 CREATE TABLE `imooc_album`(
 `id` int unsigned auto_increment key,
 `pId` int unsigned not null,
-`albumPath` varchar(50) not null
+`albumPath` varchar(255) not null
 );
 
 /*创建一个管理员hengwen，密码也是hengwen*/

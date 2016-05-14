@@ -62,6 +62,24 @@ $(document).ready(function() {
         	});
         	
         });	
+	
+/*jquery ui dialog插件，在后台商品列表中点击详情是弹出一个商品详情的对话框*/
+	$('input[value="详情"]').click(function() {
+			var id = $(this).attr('data');
+			var pName = $(this).attr('pName');
+			$("#showDetail"+id).dialog({
+				  	height:"auto",
+			      width: "900",
+			      position: {my: "center", at: "center",  collision:"fit"},
+			      modal:false,//是否模式对话框
+			      draggable:true,//是否允许拖拽
+			      resizable:true,//是否允许拖动
+			      title:"商品名称："+pName,//对话框标题
+			      show:"slide",
+			      hide:"explode"
+			});
+		});
+	
 });
 
 	

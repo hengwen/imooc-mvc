@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 17:02:39
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-14 05:26:55
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:20777256525734294fb721f2-84638476%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463065352,
+      1 => 1463195247,
       2 => 'file',
     ),
   ),
@@ -30,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta charset="UTF-8">
 	<title>后台首页</title>
 	<link rel="stylesheet" href="css/backstage.css">
+	<link rel="stylesheet" href="scripts/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css">
 </head>
 <body>
 	<div class="bs-top">
@@ -111,6 +112,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="scripts/editor/kindeditor.js"></script>
 	<script src="scripts/editor/lang/zh_CN.js"></script>
 	<script src="scripts/jquery-1.12.3.min.js"></script>
+	<script src="scripts/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
 	<script src="scripts/backstage.js"></script>
 	<script type="text/javascript">
 		function show(menu,change){

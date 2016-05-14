@@ -60,9 +60,22 @@ class listModel{
 		$this->table = $table;
 		$this->page = $p;
 		$this->start = ($this->page-1)*$this->page_size;
-		$sql = "select * from imooc_pro join imooc_cate on imooc_pro.cId = imooc_cate.id LIMIT ".$this->start.",".$this->page_size;;
+		$sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName from imooc_pro p join imooc_cate c on p.cId = c.id LIMIT ".$this->start.",".$this->page_size;
 		$result = DB::fetchAll($sql);
 		return $result;
+	}
+	/**
+	 * 构建一个三维数组，[id][i][albumPath]保存商品id以及对应的图片路径数组
+	 */
+	public function getProImage(){
+		$sql1 = "select id from imooc_pro";
+		$id = DB::fetchAll($sql1);
+		foreach ($id as $value) {
+			$sql2 = "select albumPath from imooc_album where pId=".$value['id'];
+			$album = DB::fetchAll($sql2);
+			$arr[$value['id']] = $album;
+		}
+		return $arr;
 	}
 		/**
 		 * 页码导航条
