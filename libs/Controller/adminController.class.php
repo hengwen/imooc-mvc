@@ -202,6 +202,16 @@
 			$tab = $_GET['tab'];
 			$this->getTablePath($tab);
 			$del = M('admin');
+			//商品的删除操作
+			if ($this->table == "imooc_pro") {
+				$delImg = $del->delImage($id);
+				if ($delImg&&$result= $del->delAdmin($this->table,$id)) {
+					$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				}else{
+					$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				}
+			}
+			//除了商品之外的删除操作
 			if($result= $del->delAdmin($this->table,$id)){
 				$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 			}else{

@@ -205,6 +205,33 @@
 				return $res = 2;  //代表商品插入失败！
 			}
 		}
+		/**
+		 * 删除商品时删除图片
+		 * @param  int $id 商品id
+		 */
+		public function delImage($id){
+			$sql = "select albumPath from imooc_album where pId=".$id;
+			$res = DB::fetchAll($sql);
+			foreach ($res as $imageUrl) {
+				$imageNameArr = explode("/", $imageUrl['albumPath']);
+				$imageName = end($imageNameArr);
+				
+				if(file_exists("uploads/proImg/".$imageName)){
+					unlink("uploads/proImg/".$imageName);
+				}
+				if(file_exists("uploads/proImg/images220/".$imageName)){
+					unlink("uploads/proImg/images220/".$imageName);
+				}
+				if(file_exists("uploads/proImg/images350/".$imageName)){
+					unlink("uploads/proImg/images350/".$imageName);
+				}
+				if(file_exists("uploads/proImg/images50/".$imageName)){
+					unlink("uploads/proImg/images50/".$imageName);
+				}
+			}
+
+			return true;
+		}
 
 
 
