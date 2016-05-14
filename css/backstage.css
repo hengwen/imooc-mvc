@@ -385,6 +385,19 @@ footer a:hover {
 .pro-add .pro-table tr:last-child td {
   text-align: center;
 }
+.pro-add .pro-table .select-cate {
+  width: 100px;
+  height: 20px;
+  margin-left: 10px;
+  background: #fff;
+}
+.pro-add .pro-table #selectFileBtn {
+  display: inline-block;
+  padding: 2px 5px;
+  margin: 0 5px;
+  border: 1px solid #999;
+  background: #fff;
+}
 .pro-add .attachItem {
   padding: 3px 5px;
 }

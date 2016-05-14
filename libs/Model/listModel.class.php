@@ -48,18 +48,19 @@ class listModel{
 			//得到每页要显示的数据
 			$this->table = $table;
 			$this->page = $p;
-			$this->total = DB::getTotal($this->table);
 			$this->start = ($this->page-1)*$this->page_size;
-			$this->page_total = ceil($this->total/$this->page_size);
-			$this->page_end = $this->page_total;
-			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab']."&p=";
 			$sql = "select * from ".$table." order by id asc LIMIT ".$this->start.",".$this->page_size;
 			$result = DB::fetchAll($sql);
 			return $result;
 		}
-
-	public function getProList(){
-		$sql = "select * from imooc_pro join imooc_cate on imooc_pro.cId = imooc_cate.id";
+	/**
+	 * 获得商品列表
+	 */
+	public function getProList($table,$p){
+		$this->table = $table;
+		$this->page = $p;
+		$this->start = ($this->page-1)*$this->page_size;
+		$sql = "select * from imooc_pro join imooc_cate on imooc_pro.cId = imooc_cate.id LIMIT ".$this->start.",".$this->page_size;;
 		$result = DB::fetchAll($sql);
 		return $result;
 	}
@@ -67,7 +68,10 @@ class listModel{
 		 * 页码导航条
 		 */
 		public function page(){
-			
+			$this->total = DB::getTotal($this->table);
+			$this->page_total = ceil($this->total/$this->page_size);
+			$this->page_end = $this->page_total;
+			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab']."&p=";
 			/**
 			 * 如果当前页为第一页，则首页和上一页不能点击
 			 */

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 13:46:52
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 17:02:39
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:20777256525734294fb721f2-84638476%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463053611,
+      1 => 1463065352,
       2 => 'file',
     ),
   ),
@@ -62,7 +62,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<li class="list-item">
 						<h3 onclick="show('menu1','change1')"><span id="change1">+</span>商品管理</h3>
 						<dl id="menu1">
-							<dd><a href="admin.php?controller=admin&method=showAddForm&tab=1" >添加商品</a></dd>
+							<dd><a href="admin.php?controller=admin&method=showProAddForm&tab=1" >添加商品</a></dd>
 							<dd><a href="admin.php?controller=admin&method=showList&tab=1&p=1">商品列表</a></dd>	
 						</dl>
 					</li>
@@ -108,6 +108,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				
 		</div>
 	</div>
+	<script src="scripts/editor/kindeditor.js"></script>
+	<script src="scripts/editor/lang/zh_CN.js"></script>
 	<script src="scripts/jquery-1.12.3.min.js"></script>
 	<script src="scripts/backstage.js"></script>
 	<script type="text/javascript">

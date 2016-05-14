@@ -71,9 +71,128 @@
 				return false;
 			}
 		}
+		/**
+		 * 获得所有分类
+		 */
+		public function getCates(){
+			$sql = "select * from imooc_cate";
+			$result = DB::fetchAll($sql);
+			return $result;
+		}
+		/**
+		 * 将上传的多文件信息重新归类，一个数组存放一个文件的所有信息
+		 */
+		public function getFiles($filesInfo){
+			$i = 0;
+			foreach ($filesInfo as $file) {
+				if(is_string($file['name'])){
+					$files[$i] = $file;
+					$i++; 
+				}elseif(is_array($file['name'])){
+					foreach ($file['name'] as $key => $value) {
+						$files[$i]['name'] = $file['name'][$key];
+						$files[$i]['type'] = $file['type'][$key];
+						$files[$i]['tmp_name'] = $file['tmp_name'][$key] ;
+						$files[$i]['error'] = $file['error'][$key];
+						$files[$i]['size'] = $file['size'][$key];
+						$i++;
+					}
+				}
+			}
+			return $files;
+		}
+		/**
+		 * 上传商品图片
+		 * @param  array $filesInfo 图片的基本信息
+		 * @return array            图片路径
+		 */
+		public function doUpload($filesInfo){
+			$filesUpload = M('upload');
+			$image = M('image');
+			$files = $this->getFiles($filesInfo);
+			$i=0;
+			foreach ($files as $file) {
+				$result[] = $filesUpload->uploadFile($file);  //单个文件放回的结果
+				if(strstr($result[$i], "uploads")){
+					$image->construct($result[$i]);
+					$image->cramping(220,220);
+					$image->cramping(350,350);
+					$image->cramping(50,50);
+					$image->destoryImage();  //销毁$result[$i]的图片资源
+					$i++;
+				}else{
+					//遍历已经上传的文件，并将文件删除
+					for ($j=0; $j < $i; $j++) { 
+						$fileName = $result[$j];
+						$subFileName = explode("/", $fileName);
+						unlink($fileName);
+						unlink($subFileName[0]."/".$subFileName[1]."/"."images220/".$subFileName[2]);
+						unlink($subFileName[0]."/".$subFileName[1]."/"."images350/".$subFileName[2]);
+						unlink($subFileName[0]."/".$subFileName[1]."/"."images50/".$subFileName[2]);
+					}
+					return $result[$i];  //返回上传文件错误信息
+				}
 
-	}
+			}
+			return $result;   //返回所有文件的路径
+			
+		}
+		/**
+		 * 商品基本信息插入
+		 * @param  array $post 表单数据
+		 * @return int       插入id号
+		 */
+		public function doProInsert($post){
+			$post['pubTime'] = date("Y-m-d",time());
+			$result = DB::insert("imooc_pro",$post);
+			return $result;
+		}
+		/**
+		 * 商品图片插入相册
+		 * @param  string $table 
+		 * @param  array $arr   
+		 */
+		public function doAblumInsert($table,$arr){
+			DB::insert($table,$arr);
+		}
+		/**
+		 * 商品添加操作
+		 * @param  array $filesInfo 
+		 * @param  array $post      
+		 * @return string            
+		 */
+		public function proAdd($filesInfo,$post){
+			$resInsert = $this->doProInsert($post);
+			if ($resInsert) {  //如果商品基本信息插入成功则进行图片的上传
+				$res = $this->doUpload($filesInfo);
+				if (is_array($res)) {
+					foreach ($res as $fileUrl) {
+						$arr['pId'] = $resInsert;
+						$arr['albumPath'] = $fileUrl;
+						$this->doAblumInsert("imooc_album",$arr);
+					}
+					return $allResult = 1;  //代表商品添加成功
+				}else{
+					return "商品插入成功，图片上传失败，原因：".$res."。请在商品列表中添加图片！";
+				}
+			}else{
+				return $res = 2;  //代表商品插入失败！
+			}
+			
+			// var_dump($res);
+			// var_dump($resInsert);
+			// if (is_array($res)&&$resInsert) {
+			// 	return true;
+			// }else{
+			// 	return $res;
+			// }
+
+		}
 
 
+
+
+
+}
 
 ?>

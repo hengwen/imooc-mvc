@@ -123,7 +123,12 @@
 			$tab = $_GET['tab'];
 			$this->getTablePath($tab);
 			$list = M('list');
-			$result = $list->getList($this->table,$p);
+			if ($tab==1) {
+				$result = $list->getProList($this->table,$p);
+			}else{
+				$result = $list->getList($this->table,$p);
+			}
+			
 			$page = $list->page();
 			if ($result) {
 				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>$this->listPath));
@@ -178,7 +183,7 @@
 			}
 
 		/**
-		 * 删除
+		 * 删除操作
 		 */
 		public function doDel(){
 			$id = $_GET['id'];
@@ -191,6 +196,39 @@
 				$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
 			}
 		}
+		/**
+		 * 显示添加商品表单
+		 */
+		public function showProAddForm(){
+			$tab = $_GET['tab'];
+			$this->getTablePath($tab);
+			$admin = M('admin');
+			$cates = $admin->getCates();
+
+			if (!$cates) {
+				$this->showmessage("还没有分类项，请先添加分类！","admin.php?controller=admin&method=index");
+			}
+			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth,'cates'=>$cates));
+			VIEW::display('admin/index.html');
+		}
+		/**
+		 * 添加商品
+		 */
+		public function addPro(){
+			$model = M('admin');
+			$res = $model->proAdd($_FILES,$_POST);
+			if ($res === 1) {  
+				$this->showmessage("商品添加成功！！","admin.php?controller=admin&method=showList&tab=1&p=1");
+			}elseif ($res === 2) {
+				$this->showmessage("商品基本信息添加失败！","admin.php?controller=admin&method=showProAddForm&tab=1");
+			}else{
+				$this->showmessage($res,"admin.php?controller=admin&method=showList&tab=1&p=1");
+			}
+			
+			
+			
+		}
+
 	}
 
 ?>

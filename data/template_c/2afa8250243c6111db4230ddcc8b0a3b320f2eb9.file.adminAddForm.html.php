@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 12:16:31
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-13 15:11:04
          compiled from "tpl/admin/adminAddForm.html" */ ?>
 <?php /*%%SmartyHeaderCode:13193496765734297d771b03-95510413%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2afa8250243c6111db4230ddcc8b0a3b320f2eb9' => 
     array (
       0 => 'tpl/admin/adminAddForm.html',
-      1 => 1463048187,
+      1 => 1463053776,
       2 => 'file',
     ),
   ),
@@ -36,7 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<td><input type="email" class="email" name="email"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="添加"></td>
+			<td colspan="2" align="center"><input type="submit" class="submit" value="添加"></td>
 		</tr>
 	</table>
 

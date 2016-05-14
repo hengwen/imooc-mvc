@@ -28,7 +28,40 @@ $(document).ready(function() {
 		var sex = $('#edit-sex').val();
 		//将用户原来的头像和性别显示
 		$("input[name='face'][value='"+face+"']").attr('checked','checked');
-		$("input[name='sex'][value='"+sex+"']").attr('checked','checked');			
+		$("input[name='sex'][value='"+sex+"']").attr('checked','checked');		
+
+	/**
+	 * 添加商品中的商品描述编辑器
+	 */
+	KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id');
+        });	
+	/**
+	 * 添加商品中的添加附件
+	 */
+	$(document).ready(function(){
+        	$("#selectFileBtn").click(function(){
+        		$fileField = $('<input type="file" name="myfile[]"/>');
+        		$fileField.hide();
+        		$("#attachList").append($fileField);
+        		$fileField.trigger("click");
+        		$fileField.change(function(){
+        		$path = $(this).val();
+        		//console.log($path);
+        		$filename = $path.substring($path.lastIndexOf("\\")+1);
+        		//console.log($filename);
+        		$attachItem = $('<div class="attachItem" style="display:inline-block"><div class="left">a.gif</div><div class="right"><a href="javascript:void(0)" title="删除附件">删除</a></div></div>');
+        		$attachItem.find(".left").html($filename);
+        		$("#attachList").append($attachItem);		
+        		});
+        	});
+        	//删除添加的附加
+        	$(document).on('click','#attachList > .attachItem a',function(){
+        		$(this).parents('.attachItem').prev('input').remove();
+        		$(this).parents('.attachItem').remove();
+        	});
+        	
+        });	
 });
 
 	

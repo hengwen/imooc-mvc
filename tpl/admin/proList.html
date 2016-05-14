@@ -1,0 +1,26 @@
+<div class="table-op-top">
+						<div class="add">
+							<a href="admin.php?controller=admin&method=showProAddForm&tab=1"  >添加</a>
+						</div>
+					</div>
+					<table class="pd-manage">
+						<tr>
+							<th width="10%">编号</th>
+							<th width="30%">商品名称</th>
+							<th width="10%">商品分类</th>
+							<th width="10%">是否上架</th>
+							<th width="10%">上架时间</th>
+							<th width="30%">操作</th>
+						</tr>
+						{foreach item=list from=$result}
+							<tr>
+								<td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label>{$list['id']}</td>
+								<td>{$list['pName']}</td>
+								<td>{$list['cName']}</td>
+								<td>{$list['isShow']}</td>
+								<td>{$list['pubTime']}</td>
+								<td><input type="button" class="pd-list-op" value="详情" ><input type="button" class="pd-list-op" value="修改"  id="edit-btn" data= {$list['id']} tab="1"	> <input type="button" class="pd-list-op" value="删除" data = {$list['id']} tab='1'></td>
+							</tr>
+						{/foreach}
+					</table>
+					<div class="page">{$page}</div>

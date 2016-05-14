@@ -390,6 +390,19 @@ footer{
 		tr:last-child td{
 			text-align: center;
 		}
+		.select-cate{
+			width: 100px;
+			height: 20px;
+			margin-left: 10px;
+			background: #fff;
+		}
+		#selectFileBtn{
+			display: inline-block;
+			padding:2px 5px;
+			margin:0 5px;
+			border: 1px solid #999;
+			background: #fff;
+		}
 	}
 	.attachItem{
 		padding:3px 5px;
