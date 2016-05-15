@@ -62,7 +62,7 @@ $(document).ready(function() {
         	});
         	
         });	
-	
+
 /*jquery ui dialog插件，在后台商品列表中点击详情是弹出一个商品详情的对话框*/
 	$('input[value="详情"]').click(function() {
 			var id = $(this).attr('data');
@@ -79,7 +79,30 @@ $(document).ready(function() {
 			      hide:"explode"
 			});
 		});
-	
+	/**
+	 * 为后台商品列表展示中商品的模糊查询传递参数
+	 */
+	$("#list-pro-search").keypress(function(event) {
+		if (event.which == 13) {
+			var keywords = $("#list-pro-search").val();
+			window.location.href = "admin.php?controller=admin&method=showList&tab=1&p=1&val="+keywords;
+		}
+	});
+
+/**
+ * 当后台商品列表中的选择按价格排列顺序时，向服务器传递一个变量
+ */
+	$("#pd-price").change(function() {
+		var order = $("#pd-price").val();
+		window.location.href = "admin.php?controller=admin&method=showList&tab=1&p=1&order="+order;
+	});
+	/**
+ * 当后台商品列表中的选择按上架时间排列顺序时，向服务器传递一个变量
+ */
+	$("#pd-pubtime").change(function() {
+		var order = $("#pd-pubtime").val();
+		window.location.href = "admin.php?controller=admin&method=showList&tab=1&p=1&order="+order;
+	});
 });
 
 	

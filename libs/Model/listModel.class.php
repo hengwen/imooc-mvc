@@ -25,6 +25,7 @@ class listModel{
 	private $page_banner;
 	//单击导航跳转链接地址
 	private $url;
+	
 
 	public function __construct(){
 		//$this->table = $table;
@@ -44,23 +45,25 @@ class listModel{
 	/**
 	 * 按分页显示数据
 	 */
-	public function getList($table,$p){
+	public function getList($table,$p,$where=null){
 			//得到每页要显示的数据
 			$this->table = $table;
 			$this->page = $p;
 			$this->start = ($this->page-1)*$this->page_size;
-			$sql = "select * from ".$table." order by id asc LIMIT ".$this->start.",".$this->page_size;
+			$sql = "select * from ".$table.$where." LIMIT ".$this->start.",".$this->page_size;
 			$result = DB::fetchAll($sql);
 			return $result;
 		}
 	/**
 	 * 获得商品列表
 	 */
-	public function getProList($table,$p){
+	public function getProList($table,$p,$where=null,$order=null){
+		$this->where = $where;
+		$this->order = $order;
 		$this->table = $table;
 		$this->page = $p;
 		$this->start = ($this->page-1)*$this->page_size;
-		$sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName from imooc_pro p join imooc_cate c on p.cId = c.id LIMIT ".$this->start.",".$this->page_size;
+		$sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName from imooc_pro p join imooc_cate c on p.cId = c.id".$where.$order." LIMIT ".$this->start.",".$this->page_size;
 		$result = DB::fetchAll($sql);
 		return $result;
 	}
@@ -80,11 +83,12 @@ class listModel{
 		/**
 		 * 页码导航条
 		 */
-		public function page(){
+		public function page($val=null,$order=null){
+
 			$this->total = DB::getTotal($this->table);
 			$this->page_total = ceil($this->total/$this->page_size);
 			$this->page_end = $this->page_total;
-			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab']."&p=";
+			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab']."&val=".$val."&order=".$order."&p=";
 			/**
 			 * 如果当前页为第一页，则首页和上一页不能点击
 			 */

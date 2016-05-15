@@ -123,16 +123,36 @@
 			$tab = $_GET['tab'];
 			$this->getTablePath($tab);
 			$list = M('list');
+			
+			//如果显示商品列表需要进行商品图片的查找
 			if ($tab==1) {
-				$result = $list->getProList($this->table,$p);
+				//如果有商品查询，则构建一个模糊查询语句的where部分
+				if (@$_GET['val']) {
+					$keywords = $_GET['val'];
+					$where = " where p.pName like '%$keywords%' ";
+				}else{
+					$keywords = null;
+					$where = null;
+				}
+				//如果有商品的排列，则构建一个order部分
+				if (@$ord = $_GET['order']) {
+					$ord = $_GET['order'];
+					$order = " order by p.".$ord;
+				}else{
+					$ord = null;
+					$order = null;
+				}
+				// $order =  @$_GET['order'] ? " order by p.".$_GET['order'] : null;
+				$result = $list->getProList($this->table,$p,$where,$order);
 				$getProImage = $list->getProImage();  //所有商品图片以及对应的商品id
+				$page = $list->page($keywords,$ord);
 			}else{
 				$result = $list->getList($this->table,$p);
+				$page = $list->page();
 			}
-			
-			$page = $list->page();
+			//显示列表
 			if ($result) {
-				if ($getProImage) {
+				if (@$getProImage) {
 					VIEW::assign(array('proImage'=>$getProImage));
 				}
 				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>$this->listPath));
@@ -266,6 +286,10 @@
 				}
 			}
 			
+			// public function proSearch(){
+			// 	$keywords = $_REQUEST['val'];
+				
+			// }
 			
 		
 

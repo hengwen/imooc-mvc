@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-14 09:53:15
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 03:54:01
          compiled from "tpl/admin/proList.html" */ ?>
 <?php /*%%SmartyHeaderCode:178100771857349b15e40bd6-38857285%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9d81de27fe13a70a1356f2d667a8d8a23b6576d0' => 
     array (
       0 => 'tpl/admin/proList.html',
-      1 => 1463212385,
+      1 => 1463277239,
       2 => 'file',
     ),
   ),
@@ -32,35 +32,36 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<a href="admin.php?controller=admin&method=showProAddForm&tab=1"  >添加</a>
 	</div>
 	<div class="table-op">
-		<label>商品名称：
+		<label>商品价格：
 			<span class="select-box">
-				<select name="pd_name" id="pd_name">
-					<option value="测试内容">测试内容</option>
-					<option value="测试内容">测试内容</option>
-					<option value="测试内容">测试内容</option>
+				<select id="pd-price">
+					<option value="">请选择</option>
+					<option value="iPrice asc">从低到高</option>
+					<option value="iPrice desc">从高到低</option>
 				</select>
 			</span>
 		</label>
 		<label>上架时间：
 			<span class="select-box">
-				<select name="pd_time" id="pd_time">
-					<option value="测试内容">测试内容</option>
-					<option value="测试内容">测试内容</option>
-					<option value="测试内容">测试内容</option>
+				<select id="pd-pubtime">
+					<option value="">请选择</option>
+					<option value="pubTime desc">最新发布</option>
+					<option value="pubTime asc">最早发布</option>
 				</select>
 			</span>
 		</label>
-		<label>搜索：<input type="text" name="search" class="search"></label>
+		<label>搜索：<input type="text" name="search" class="search" id="list-pro-search"></label>
 	</div>
 </div>
 <table class="pd-manage">
 	<tr>
-		<th width="10%">编号</th>
+		<th width="5%">编号</th>
 		<th width="30%">商品名称</th>
 		<th width="10%">商品分类</th>
+		<th width="10%">商品价格</th>
 		<th width="10%">是否上架</th>
 		<th width="10%">上架时间</th>
-		<th width="30%">操作</th>
+		<th width="25%">操作</th>
 	</tr>
 	<?php  $_smarty_tpl->tpl_vars['list'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['list']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['result']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -73,6 +74,8 @@ $_smarty_tpl->tpl_vars['list']->_loop = true;
 			<td><?php echo $_smarty_tpl->tpl_vars['list']->value['pName'];?>
 </td>
 			<td><?php echo $_smarty_tpl->tpl_vars['list']->value['cName'];?>
+</td>
+			<td><?php echo $_smarty_tpl->tpl_vars['list']->value['iPrice'];?>
 </td>
 			<td><?php if ($_smarty_tpl->tpl_vars['list']->value['isShow']==1) {?> 上架 <?php } else { ?> 下架 <?php }?></td>
 			<td><?php echo $_smarty_tpl->tpl_vars['list']->value['pubTime'];?>
@@ -125,7 +128,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['image']->_loop = true;
 ?>
         					<img width="100" height="100" src= <?php echo $_smarty_tpl->tpl_vars['image']->value['albumPath'];?>
- alt=""/> &nbsp;&nbsp;
+ alt="商品图片"/> &nbsp;&nbsp;
         			<?php } ?>
         			</td>
         		</tr>
