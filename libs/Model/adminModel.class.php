@@ -121,27 +121,31 @@
 			$i=0;
 			foreach ($files as $file) {
 				$result[] = $filesUpload->uploadFile($file);  //单个文件放回的结果
-				if(strstr($result[$i], "uploads")){
-					$image->construct($result[$i]);
-					$image->cramping(220,220);
-					$image->cramping(350,350);
+				if(strstr($result[$i], ".")){
+					$url = "uploads/proImg/".$result[$i];
+					$image->construct($url);
+					$image->cramping(200,200);
+					$image->cramping(300,300);
 					$image->cramping(50,50);
+					$image->cramping(100,100);
 					$image->destoryImage();  //销毁$result[$i]的图片资源
 					$i++;
 				}else{
 					//遍历已经上传的文件，并将文件删除
 					for ($j=0; $j < $i; $j++) { 
 						$fileName = $result[$j];
-						$subFileName = explode("/", $fileName);
-						unlink($fileName);
-						unlink($subFileName[0]."/".$subFileName[1]."/"."images220/".$subFileName[2]);
-						unlink($subFileName[0]."/".$subFileName[1]."/"."images350/".$subFileName[2]);
-						unlink($subFileName[0]."/".$subFileName[1]."/"."images50/".$subFileName[2]);
+						unlink("uploads/proImg/".$fileName);
+						unlink("uploads/proImg/images50/".$fileName);
+						unlink("uploads/proImg/images200/".$fileName);
+						unlink("uploads/proImg/images300/".$fileName);
+						unlink("uploads/proImg/images100/".$fileName);
 					}
 					return $result[$i];  //返回上传文件错误信息
 				}
 
 			}
+			// print_r($result);
+			// exit;
 			return $result;   //返回所有文件的路径
 			
 		}
@@ -214,27 +218,27 @@
 			}
 		}
 		/**
-		 * 根基商品id号删除图片
+		 * 根据商品id号删除图片
 		 * @param  int $id 商品id
 		 */
 		public function delImage($id){
 			$sql = "select albumPath from imooc_album where pId=".$id;
 			$res = DB::fetchAll($sql);
 			foreach ($res as $imageUrl) {
-				$imageNameArr = explode("/", $imageUrl['albumPath']);
-				$imageName = end($imageNameArr);
-				
 				if(file_exists("uploads/proImg/".$imageName)){
 					unlink("uploads/proImg/".$imageName);
 				}
-				if(file_exists("uploads/proImg/images220/".$imageName)){
-					unlink("uploads/proImg/images220/".$imageName);
+				if(file_exists("uploads/proImg/images200/".$imageName)){
+					unlink("uploads/proImg/images200/".$imageName);
 				}
-				if(file_exists("uploads/proImg/images350/".$imageName)){
-					unlink("uploads/proImg/images350/".$imageName);
+				if(file_exists("uploads/proImg/images300/".$imageName)){
+					unlink("uploads/proImg/images300/".$imageName);
 				}
 				if(file_exists("uploads/proImg/images50/".$imageName)){
 					unlink("uploads/proImg/images50/".$imageName);
+				}
+				if(file_exists("uploads/proImg/images100/".$imageName)){
+					unlink("uploads/proImg/images100/".$imageName);
 				}
 			}
 

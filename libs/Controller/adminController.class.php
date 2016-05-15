@@ -248,7 +248,7 @@
 			$cates = $admin->getCates();
 
 			if (!$cates) {
-				$this->showmessage("还没有分类项，请先添加分类！","admin.php?controller=admin&method=index");
+				$this->showmessage("还没有分类项，请先添加分类！","admin.php?controller=admin&method=showAddForm&tab=2");
 			}
 			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth,'cates'=>$cates));
 			VIEW::display('admin/index.html');
@@ -308,9 +308,7 @@
 					$this->showmessage("删除失败！！","admin.php?controller=admin&method=showList&tab=2&p=1");
 				}
 			}
-			
 		
-
 	}
 
 ?>

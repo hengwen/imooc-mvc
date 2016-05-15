@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-14 09:53:15
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 10:30:33
          compiled from "tpl/admin/index.html" */ ?>
-<?php /*%%SmartyHeaderCode:20777256525734294fb721f2-84638476%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:53301772573833a9a01187-82365703%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463212375,
+      1 => 1463281795,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20777256525734294fb721f2-84638476',
+  'nocache_hash' => '53301772573833a9a01187-82365703',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_5734294fc10b20_06335904',
   'variables' => 
   array (
     'auth' => 0,
     'path' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_573833a9b6a831_38339535',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5734294fc10b20_06335904')) {function content_5734294fc10b20_06335904($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_573833a9b6a831_38339535')) {function content_573833a9b6a831_38339535($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -35,7 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
 	<div class="bs-top">
 		<div class="inner-center">
-			<div class="back-logo"><img src="images/logo_b_index.png" alt="慕课网logo"></div>
+			<div class="back-logo"><img src="images/backstage/logo_b_index.png" alt="慕课网logo"></div>
 			<div class="bs-tit">慕课电子商务后台管理系统</div>
 		</div>
 	</div>
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<span class="m-name">欢迎您&nbsp;<?php echo $_smarty_tpl->tpl_vars['auth']->value;?>
 
 			</span>
-			<a href="../index.php" class="home">首页</a>
+			<a href="admin.php?controller=admin&method=foreIndex" class="home">首页</a>
 			<a href="#" class="advance">前进</a>
 			<a href="#" class="back">后退</a>
 			<a href="#" class="refresh">刷新</a>

@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 03:54:01
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 11:01:28
          compiled from "tpl/admin/proList.html" */ ?>
-<?php /*%%SmartyHeaderCode:178100771857349b15e40bd6-38857285%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18239763395738360802b2a0-25772816%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9d81de27fe13a70a1356f2d667a8d8a23b6576d0' => 
     array (
       0 => 'tpl/admin/proList.html',
-      1 => 1463277239,
+      1 => 1463302886,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '178100771857349b15e40bd6-38857285',
+  'nocache_hash' => '18239763395738360802b2a0-25772816',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57349b15f07262_70225828',
+  'unifunc' => 'content_573836081ddfb1_47788398',
   'variables' => 
   array (
     'result' => 0,
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57349b15f07262_70225828')) {function content_57349b15f07262_70225828($_smarty_tpl) {?><div class="table-op-top">
+<?php if ($_valid && !is_callable('content_573836081ddfb1_47788398')) {function content_573836081ddfb1_47788398($_smarty_tpl) {?><div class="table-op-top">
 	<div class="add">
 		<a href="admin.php?controller=admin&method=showProAddForm&tab=1"  >添加</a>
 	</div>
@@ -127,7 +127,7 @@ $_smarty_tpl->tpl_vars['list']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['image']->key => $_smarty_tpl->tpl_vars['image']->value) {
 $_smarty_tpl->tpl_vars['image']->_loop = true;
 ?>
-        					<img width="100" height="100" src= <?php echo $_smarty_tpl->tpl_vars['image']->value['albumPath'];?>
+        					<img width="100" height="100" src= uploads/proImg/<?php echo $_smarty_tpl->tpl_vars['image']->value['albumPath'];?>
  alt="商品图片"/> &nbsp;&nbsp;
         			<?php } ?>
         			</td>

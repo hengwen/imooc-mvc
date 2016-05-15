@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 11:20:27
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 11:20:39
          compiled from "tpl/admin/login.html" */ ?>
-<?php /*%%SmartyHeaderCode:165346717257344adbb49ae0-06248392%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:90870264957383f67df2512-81730095%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '6f35e97b5747996f7520d7ee6b7eecb5de151b64' => 
     array (
       0 => 'tpl/admin/login.html',
-      1 => 1463027145,
+      1 => 1463281856,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '165346717257344adbb49ae0-06248392',
+  'nocache_hash' => '90870264957383f67df2512-81730095',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57344adbca5d29_27514161',
+  'unifunc' => 'content_57383f67eb7643_90608219',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57344adbca5d29_27514161')) {function content_57344adbca5d29_27514161($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_57383f67eb7643_90608219')) {function content_57383f67eb7643_90608219($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -29,7 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
 	<div class="login-top">
 		<div class="inner-center">
-			<div class="logo"><a href="javascript:void(0);"><img src="images/img_b_logo.jpg" alt="mooc logo"></a>欢迎登陆</div>
+			<div class="logo"><a href="javascript:void(0);"><img src="images/backstage/img_b_logo.jpg" alt="mooc logo"></a>欢迎登陆</div>
 		</div>
 	</div>
 	<div class="back-login">

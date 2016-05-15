@@ -147,11 +147,11 @@ class uploadModel{
 		$this->fileInfo = $fileInfo;
 		if ($this->checkError()&&$this->checkSize()&&$this->checkExt()&&$this->checkMime()&&$this->checkTrueImg()&&$this->checkHTTPPost()) {
 			$this->checkUploadPath();
-			$this->uniName = $this->getUniName();
-			$this->destination = $this->uploadPath.'/'.$this->uniName.'.'.$this->ext;
+			$this->uniName = $this->getUniName().'.'.$this->ext;
+			$this->destination = $this->uploadPath.'/'.$this->uniName;
 			//var_dump($this->destination);
 			if (@move_uploaded_file($this->fileInfo['tmp_name'],$this->destination)) {
-				return $this->destination;
+				return $this->uniName;
 			}else{
 				$this->error = '文件移动失败';
 				$error = $this->showError();

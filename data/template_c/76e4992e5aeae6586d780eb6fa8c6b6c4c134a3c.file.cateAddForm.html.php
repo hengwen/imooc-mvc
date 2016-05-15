@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 13:50:32
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 10:30:49
          compiled from "tpl/admin/cateAddForm.html" */ ?>
-<?php /*%%SmartyHeaderCode:76514651857346d34a70698-81696087%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:561379042573833b945e013-31855556%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '76514651857346d34a70698-81696087',
+  'nocache_hash' => '561379042573833b945e013-31855556',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57346d34ac8533_88384643',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_573833b94abea3_40895522',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57346d34ac8533_88384643')) {function content_57346d34ac8533_88384643($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_573833b94abea3_40895522')) {function content_573833b94abea3_40895522($_smarty_tpl) {?>
 <form class="admin-add" action="admin.php?controller=admin&method=doAdd&tab=2" method="post" >
 	<table  width="400" border="1" bgcolor="#ccc">
 	<caption>添加分类</caption>
