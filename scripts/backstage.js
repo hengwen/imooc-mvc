@@ -17,6 +17,17 @@ $(document).ready(function() {
 			window.location.href = "admin.php?controller=admin&method=doDel&tab="+tab+"&id="+id;
 		}
 	});
+	/**
+	 * 后台删除分类
+	 */
+	$('input[value="删除分类"]').click(function(){
+		var id = $(this).attr('data');
+		var tab = $(this).attr('tab');
+		if(window.confirm("您确定要删除吗？")){
+			window.location.href = "admin.php?controller=admin&method=doDelCate&tab="+tab+"&id="+id;
+		}
+	});
+
 	
 	//添加用户时获得当前日期并传递给表单中的input
 	var time = new Date();

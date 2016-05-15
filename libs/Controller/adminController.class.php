@@ -285,11 +285,29 @@
 					$this->showmessage($res,"admin.php?controller=admin&method=showList&tab=1&p=1");
 				}
 			}
-			
-			// public function proSearch(){
-			// 	$keywords = $_REQUEST['val'];
-				
-			// }
+			/**
+			 * 删除分类的同时删除商品以及商品图片
+			 */
+			public function doDelCate(){
+				$id = $_GET['id'];
+				$tab = $_GET['tab'];
+				$this->getTablePath($tab);
+				$del = M('admin');
+				$proIdArr = $del->getAllProId($id);
+				if ($proIdArr) { //如果分类下有商品则遍历删除
+					foreach ($proIdArr as $proId) {
+						$del->delAdmin('imooc_pro',$proId['id']);  //删除商品
+						$del->delImage($proId['id']);  //删除商品图片
+					}
+				}
+				//删除分类
+				$res3 = $del->delAdmin('imooc_cate',$id);
+				if ($res3) {
+					$this->showmessage("删除成功!!","admin.php?controller=admin&method=showList&tab=2&p=1");
+				}else{
+					$this->showmessage("删除失败！！","admin.php?controller=admin&method=showList&tab=2&p=1");
+				}
+			}
 			
 		
 

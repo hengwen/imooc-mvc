@@ -80,6 +80,14 @@
 			return $result;
 		}
 		/**
+		 * 获得分类下的所有商品id号
+		 */
+		public function getAllProId($cId){
+			$sql = "select id from imooc_pro where cId=".$cId;
+			$result = DB::fetchAll($sql);
+			return $result;
+		}
+		/**
 		 * 将上传的多文件信息重新归类，一个数组存放一个文件的所有信息
 		 */
 		public function getFiles($filesInfo){
@@ -206,7 +214,7 @@
 			}
 		}
 		/**
-		 * 删除商品时删除图片
+		 * 根基商品id号删除图片
 		 * @param  int $id 商品id
 		 */
 		public function delImage($id){

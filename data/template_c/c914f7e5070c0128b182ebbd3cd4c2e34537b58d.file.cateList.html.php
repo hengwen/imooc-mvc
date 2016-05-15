@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-12 13:46:56
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 04:18:11
          compiled from "tpl/admin/cateList.html" */ ?>
 <?php /*%%SmartyHeaderCode:161262916957346d30292964-54821801%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c914f7e5070c0128b182ebbd3cd4c2e34537b58d' => 
     array (
       0 => 'tpl/admin/cateList.html',
-      1 => 1463053564,
+      1 => 1463278216,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57346d3031dc82_99259243',
   'variables' => 
   array (
     'result' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'page' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57346d3031dc82_99259243',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57346d3031dc82_99259243')) {function content_57346d3031dc82_99259243($_smarty_tpl) {?><div class="table-op-top">
 						<div class="add">
@@ -47,7 +47,7 @@ $_smarty_tpl->tpl_vars['list']->_loop = true;
 								<td><?php echo $_smarty_tpl->tpl_vars['list']->value['cName'];?>
 </td>
 								<td><input type="button" class="pd-list-op" value="修改"  id="edit-btn" data= <?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
- tab="2"	> <input type="button" class="pd-list-op" value="删除" data = <?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
+ tab="2"	> <input type="button" class="pd-list-op" value="删除分类" data = <?php echo $_smarty_tpl->tpl_vars['list']->value['id'];?>
  tab="2"></td>
 							</tr>
 						<?php } ?>
