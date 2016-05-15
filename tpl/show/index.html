@@ -9,35 +9,13 @@
 <body>
 	<header class="header">
 		
-			<div class="top">
-				<div class="inner-center">
-					<div class="top-left">
-						<a href="#">收藏慕课</a>
-					</div>
-					<div class="top-right">
-						欢迎来到慕课！ <a href="#">[登入]</a><a href="#">[免费注册]</a>
-					</div>
-				</div>
-			</div><!--top结束-->
-			<div class="logo-search">
-				<div class="inner-center">
-					<div class="logo">
-						<a href="#"><img src="images/img_logo.jpg" alt="慕课网"></a>
-					</div>
-					<div class="search">
-						<input type="text" class="search-txt"><input type="text" class="search-btn" value="搜索">
-					</div>
-					<div class="shop">
-						<span class="shop-car">购物车</span>
-						<span class="shop-num">0</span>
-					</div>
-				</div>
-			</div><!--logo-search结束-->
+			{include file="show/top.html"}
+			{include file="show/logo-search.html"}
 			<nav class="nav">
 				<div class="inner-center">
 					<div class="shop-class">
 						<h1><a href="#">全部商品分类</a></h1>
-						<div class="shop-class-info">
+						<div class="shop-class-info" style="display: block">
 							<dl class="shop-class-list">
 								<dt class="list-tt">
 									<a href="#">手机</a>
@@ -201,19 +179,7 @@
 				</div>
 			</nav><!--nav结束-->
 	</header>
-	<section class="section-banner">
-		<div class="inner-center">
-			<div class="img-box">
-				<ul class="img-list">
-					<li class="list-item"><a href="#"><img src="images/ad_big1.jpg" alt="ad1"></a></li>
-					<li class="list-item"><a href="#"><img src="images/ad_big2.jpg" alt="ad2"></a></li>
-				</ul>
-				<div class="banner-btn">
-					<a href="#" class="current"></a><a href="#"></a>
-				</div>
-			</div>
-		</div>
-	</section>
+	{include file="show/banner.html"}
 	{foreach item=cate from=$cates}
 	<section class="section-computer">
 		<div class="inner-center">
@@ -293,23 +259,6 @@
 		</div>
 	</section><!--section-computer结束-->
 	{/foreach}
-	<footer>
-		<div class="inner-center">
-			<p class="footer-nav">
-				<a href="#">慕课简介</a> |
-				<a href="#">慕课公告</a> |
-				<a href="#">招纳贤士</a> |
-				<a href="#">联系我们</a> |
-				<span>客服热线：400-675-1234</span>
-			</p>
-			<p class="copyright">Copyright &copy; 2006 - 2014 慕课版权所有   京ICP备09037834号   京ICP证B1034-8373号   某市公安局XX分局备案编号：123456789123</p>
-
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-			
-		</div>
-	</footer>
+	{include file="show/footer.html"}
 </body>
 </html>

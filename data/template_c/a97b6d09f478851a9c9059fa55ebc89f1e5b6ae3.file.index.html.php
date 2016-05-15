@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 13:16:07
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 13:52:26
          compiled from "tpl/show/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:14554671545738244370b075-38890043%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a97b6d09f478851a9c9059fa55ebc89f1e5b6ae3' => 
     array (
       0 => 'tpl/show/index.html',
-      1 => 1463310965,
+      1 => 1463313143,
       2 => 'file',
     ),
   ),
@@ -42,35 +42,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
 	<header class="header">
 		
-			<div class="top">
-				<div class="inner-center">
-					<div class="top-left">
-						<a href="#">收藏慕课</a>
-					</div>
-					<div class="top-right">
-						欢迎来到慕课！ <a href="#">[登入]</a><a href="#">[免费注册]</a>
-					</div>
-				</div>
-			</div><!--top结束-->
-			<div class="logo-search">
-				<div class="inner-center">
-					<div class="logo">
-						<a href="#"><img src="images/img_logo.jpg" alt="慕课网"></a>
-					</div>
-					<div class="search">
-						<input type="text" class="search-txt"><input type="text" class="search-btn" value="搜索">
-					</div>
-					<div class="shop">
-						<span class="shop-car">购物车</span>
-						<span class="shop-num">0</span>
-					</div>
-				</div>
-			</div><!--logo-search结束-->
+			<?php echo $_smarty_tpl->getSubTemplate ("show/top.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+			<?php echo $_smarty_tpl->getSubTemplate ("show/logo-search.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 			<nav class="nav">
 				<div class="inner-center">
 					<div class="shop-class">
 						<h1><a href="#">全部商品分类</a></h1>
-						<div class="shop-class-info">
+						<div class="shop-class-info" style="display: block">
 							<dl class="shop-class-list">
 								<dt class="list-tt">
 									<a href="#">手机</a>
@@ -234,19 +214,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 			</nav><!--nav结束-->
 	</header>
-	<section class="section-banner">
-		<div class="inner-center">
-			<div class="img-box">
-				<ul class="img-list">
-					<li class="list-item"><a href="#"><img src="images/ad_big1.jpg" alt="ad1"></a></li>
-					<li class="list-item"><a href="#"><img src="images/ad_big2.jpg" alt="ad2"></a></li>
-				</ul>
-				<div class="banner-btn">
-					<a href="#" class="current"></a><a href="#"></a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php echo $_smarty_tpl->getSubTemplate ("show/banner.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 	<?php  $_smarty_tpl->tpl_vars['cate'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['cate']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['cates']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['cate']->key => $_smarty_tpl->tpl_vars['cate']->value) {
@@ -353,23 +322,7 @@ $_smarty_tpl->tpl_vars['paths']->_loop = true;
 		</div>
 	</section><!--section-computer结束-->
 	<?php } ?>
-	<footer>
-		<div class="inner-center">
-			<p class="footer-nav">
-				<a href="#">慕课简介</a> |
-				<a href="#">慕课公告</a> |
-				<a href="#">招纳贤士</a> |
-				<a href="#">联系我们</a> |
-				<span>客服热线：400-675-1234</span>
-			</p>
-			<p class="copyright">Copyright &copy; 2006 - 2014 慕课版权所有   京ICP备09037834号   京ICP证B1034-8373号   某市公安局XX分局备案编号：123456789123</p>
+	<?php echo $_smarty_tpl->getSubTemplate ("show/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-				<a href="#"><img src="images/icon_licence.jpg" alt="licence"></a>
-			
-		</div>
-	</footer>
 </body>
 </html><?php }} ?>

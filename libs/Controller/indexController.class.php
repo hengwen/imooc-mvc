@@ -28,8 +28,15 @@
 			$this->getPro($limit);
 			VIEW::display('show/index.html');
 		}
+		/**
+		 * 商品详情页展示
+		 */
+		public function detail(){
+			$id = $_GET['id'];
+			VIEW::display('show/detail.html');
+		}
 
-		
+
 
 
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册页</title>
+	<link rel="stylesheet" href="css/meyer-reset.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="login-top">
+		<div class="inner-center">
+			<div class="logo"><a href="javascript:void(0);"><img src="images/img_logo.jpg" alt="mooc logo"></a>欢迎注册</div>
+		</div>
+	</div>
+	<div class="register-box">
+		<div class="inner-center">
+			<form action="#" method="post" name="registerForm" class="register-form">
+				<div>
+					<label><span class="tit"><em>*</em>账户名：</span><input type="text" class="user" name="user" placeholder="邮箱/用户名/手机号"></label>
+				</div>
+				<div>
+					<label><span class="tit"><em>*</em>请设置密码：</span><input type="password" class="password" name="password" ></label>
+				</div>
+				<div>
+					<label><span class="tit"><em>*</em>请确认密码：</span><input type="password" class="password" name="password" ></label>
+				</div>
+				<div>
+					<label><span class="tit"><em>*</em>邮箱：</span><input type="email" class="email" name="email" ></label>
+				</div>
+				<div>
+					<label><span class="tit"><em>*</em>地址：</span><input type="address" class="address" name="address" ></label>
+				</div>
+				<div>
+					<label><input type="checkbox" name="readed" class="readed">我已阅读并同意<a href="javascript:void(0);">《用户注册协议》</a></label>
+				</div>
+				<input type="submit" name="submit" class="submit">
+			</form>
+		</div>
+	</div>
+	{include file="show/footer.html"}
+</body>
+</html>
