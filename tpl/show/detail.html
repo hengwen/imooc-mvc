@@ -6,7 +6,11 @@
 	<link rel="stylesheet" href="css/meyer-reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="scripts/jquery-1.12.3.min.js"></script>
+
+	<script src="scripts/jquery.jqzoom.js"></script>
+	<link rel="stylesheet" href="css/jqzoom.css">
 	<script src="scripts/main.js"></script>
+
 </head>
 <body>
 	<header class="header">
@@ -19,30 +23,27 @@
 			<div class="detail-top"><a href="#">首页</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">Apple 苹果</a>&nbsp;&gt;&nbsp;<a href="#">MD531CH/A</a></div>
 			<div class="dt-info">
 				<div class="info-img">
-					<div class="img-big"><img src="images/pd-detail/pd_detail_big1.jpg" alt="ipad"></div>
-					<ul class="info-img-list">
-						<li class="list-item">
-							<a href="#" class="list-item-link current"><img src="images/pd-detail/pd_detail_small1.jpg" alt="ipad"></a>
+				
+					<div class="img-big">
+						<a href={"uploads/proImg/"|cat:$bigPath} class="jqzoom" rel='gal1'  title="triumph"><img src={"uploads/proImg/images300/"|cat:$bigPath} alt="ipad" title="triumph"></a>
+					</div>
+					<ul class="info-img-list" id="thumblist">
+					{foreach key=i item=images from=$proImage}
+
+						<li class="list-item" >
+							<a href="javascript:void(0);" {if $i eq 0} class="zoomThumbActive list-item-link current" {else} class="list-item-link current" {/if} 
+							{literal} rel="{gallery: 'gal1', smallimage: '{/literal}{"uploads/proImg/images300/"|cat:$images.albumPath|cat:"', largeimage: '"|cat:"uploads/proImg/"|cat:$images.albumPath}{literal}'}" {/literal}>
+								<img  src={"uploads/proImg/images50/"|cat:$images.albumPath} alt="ipad" >
+							</a>
 						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small2.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small3.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small4.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small5.jpg" alt="ipad"></a>
-						</li>
+					{/foreach}
 					</ul>
 				</div>
 				<div class="info-pd-box">
-					<p class="info-pd-tit"><a href="#">全网底价 Apple 苹果 iPad mini 16G wifi版 平板电脑 前白后银 MD531CH/A 银白两色生产批次不同混合发货</a></p>
+					<p class="info-pd-tit"><a href="#">{$pName}</a></p>
 					<ul class="info-pd-list">
 						<li class="list-item"><span class="list-tit">慕课价</span><div>
-							<span class="price">￥1999.00</span>
+							<span class="price">&yen;{$iPrice}</span>
 						</div></li>
 						<li class="list-item"><span class="list-tit">优惠</span><div>
 							<span class="preferential">购ipad加价优惠够配件或USB充电插座</span>
@@ -72,8 +73,8 @@
 					</ul>
 					<div class="pd-choice">已选择<a href="javascript:void(0);">“白色|WIFI 16G”</a></div>
 					<div class="pd-buy">
-						<a href="javacript:void(0);" class="pd-add-shopCar">加入购物车</a>
-						<a href="javacript:void(0);" class="pd-buy-now">立即购买</a>
+						<a href="javascript:void(0);" class="pd-add-shopCar">加入购物车</a>
+						<a href="javascript:void(0);" class="pd-buy-now">立即购买</a>
 					</div>
 					<span class="attention">注意：此商品可提供普通发票，不提供增值税发票。</span>
 				</div>
@@ -134,7 +135,7 @@
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>强烈推荐</span></h4>
-							<p>现在就是买mini的好时候！换代清仓直降，但苹果品质不变！A5双核，内置Lightning闪电接口，正反可插，方便人性。小身材，炫丽的7.9英寸显示屏，7.2mm的厚度，薄如铅笔。女生包包随身携带更时尚！facetime视频通话，与密友24小时畅聊不断线。微信倾力打造，你的智能助理。苹果的牌子就不用我说了，1111补仓，存货不多哦！</p>
+							<p>{$pDesc}</p>
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>精美图片</span></h4>

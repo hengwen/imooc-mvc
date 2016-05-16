@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 10:40:45
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 14:56:04
          compiled from "tpl/admin/proEditForm.html" */ ?>
 <?php /*%%SmartyHeaderCode:12483923635738360de58bf5-09933782%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '204a6074e6950d4a3ad616ebca71a0737dc7644d' => 
     array (
       0 => 'tpl/admin/proEditForm.html',
-      1 => 1463221526,
+      1 => 1463316951,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_5738360df3a8f5_64027017',
   'variables' => 
   array (
     'id' => 0,
@@ -32,8 +34,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pubTime' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_5738360df3a8f5_64027017',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5738360df3a8f5_64027017')) {function content_5738360df3a8f5_64027017($_smarty_tpl) {?>
 <form class="admin-add pro-add" action="admin.php?controller=admin&method=editPro&tab=1&id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<caption>编辑商品</caption>
 		<tr>
 			<th width="20%">商品名称：</th>
-			<td><input type="text"  name="pName" id="pName" placeholder="<?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
+			<td><input type="text"  name="pName" id="pName" value="<?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
 "></td>
 		</tr>
 		<tr>
@@ -70,32 +70,32 @@ $_smarty_tpl->tpl_vars['cate']->_loop = true;
 		</tr>
 		<tr>
 			<th > 商品货号：</th>
-			<td><input type="text"  name="pSn" placeholder="<?php echo $_smarty_tpl->tpl_vars['pSn']->value;?>
+			<td><input type="text"  name="pSn" value="<?php echo $_smarty_tpl->tpl_vars['pSn']->value;?>
 "></td>
 		</tr>
 		<tr>
 			<th > 商品库存：</th>
-			<td><input type="text" name="pNum" placeholder="<?php echo $_smarty_tpl->tpl_vars['pNum']->value;?>
+			<td><input type="text" name="pNum" value="<?php echo $_smarty_tpl->tpl_vars['pNum']->value;?>
 "></td>
 		</tr>
 		<tr>
 			<th > 市场价格：</th>
-			<td><input type="text" name="mPrice" placeholder="<?php echo $_smarty_tpl->tpl_vars['mPrice']->value;?>
+			<td><input type="text" name="mPrice" value="<?php echo $_smarty_tpl->tpl_vars['mPrice']->value;?>
 "></td>
 		</tr>
 		<tr>
 			<th > 慕课价格：</th>
-			<td><input type="text" name="iPrice" placeholder="<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
+			<td><input type="text" name="iPrice" value="<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
 "></td>
 		</tr>
 		<tr>
 			<th> 是否上架：</th>
-			<td><input type="text" name="isShow" placeholder="<?php echo $_smarty_tpl->tpl_vars['isShow']->value;?>
+			<td><input type="text" name="isShow" value="<?php echo $_smarty_tpl->tpl_vars['isShow']->value;?>
 "></td>
 		</tr>
 		<tr>
 			<th> 是否热卖：</th>
-			<td><input type="text" name="isHot" placeholder="<?php echo $_smarty_tpl->tpl_vars['isHot']->value;?>
+			<td><input type="text" name="isHot" value="<?php echo $_smarty_tpl->tpl_vars['isHot']->value;?>
 "></td>
 		</tr>
 		<tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 13:45:57
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 03:25:29
          compiled from "tpl/show/detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:179417678857385db9aca3b0-53337851%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6322a458b0cb8c7d29660227cd0315b5d45cd298' => 
     array (
       0 => 'tpl/show/detail.html',
-      1 => 1463312756,
+      1 => 1463361928,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1-DEV',
   'unifunc' => 'content_57385db9bc1b09_31814339',
+  'variables' => 
+  array (
+    'bigPath' => 0,
+    'proImage' => 0,
+    'i' => 0,
+    'images' => 0,
+    'pName' => 0,
+    'iPrice' => 0,
+    'pDesc' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57385db9bc1b09_31814339')) {function content_57385db9bc1b09_31814339($_smarty_tpl) {?><!DOCTYPE html>
@@ -27,7 +37,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<link rel="stylesheet" href="css/meyer-reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="scripts/jquery-1.12.3.min.js"></script>
+
+	<script src="scripts/jquery.jqzoom.js"></script>
+	<link rel="stylesheet" href="css/jqzoom.css">
 	<script src="scripts/main.js"></script>
+
 </head>
 <body>
 	<header class="header">
@@ -43,30 +57,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="detail-top"><a href="#">首页</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">Apple 苹果</a>&nbsp;&gt;&nbsp;<a href="#">MD531CH/A</a></div>
 			<div class="dt-info">
 				<div class="info-img">
-					<div class="img-big"><img src="images/pd-detail/pd_detail_big1.jpg" alt="ipad"></div>
-					<ul class="info-img-list">
-						<li class="list-item">
-							<a href="#" class="list-item-link current"><img src="images/pd-detail/pd_detail_small1.jpg" alt="ipad"></a>
+				
+					<div class="img-big">
+						<a href=<?php echo ("uploads/proImg/").($_smarty_tpl->tpl_vars['bigPath']->value);?>
+ class="jqzoom" rel='gal1'  title="triumph"><img src=<?php echo ("uploads/proImg/images300/").($_smarty_tpl->tpl_vars['bigPath']->value);?>
+ alt="ipad" title="triumph"></a>
+					</div>
+					<ul class="info-img-list" id="thumblist">
+					<?php  $_smarty_tpl->tpl_vars['images'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['images']->_loop = false;
+ $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['proImage']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['images']->key => $_smarty_tpl->tpl_vars['images']->value) {
+$_smarty_tpl->tpl_vars['images']->_loop = true;
+ $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['images']->key;
+?>
+
+						<li class="list-item" >
+							<a href="javascript:void(0);" <?php if ($_smarty_tpl->tpl_vars['i']->value==0) {?> class="zoomThumbActive list-item-link current" <?php } else { ?> class="list-item-link current" <?php }?> 
+							 rel="{gallery: 'gal1', smallimage: '<?php echo (((("uploads/proImg/images300/").($_smarty_tpl->tpl_vars['images']->value['albumPath'])).("', largeimage: '")).("uploads/proImg/")).($_smarty_tpl->tpl_vars['images']->value['albumPath']);?>
+'}" >
+								<img  src=<?php echo ("uploads/proImg/images50/").($_smarty_tpl->tpl_vars['images']->value['albumPath']);?>
+ alt="ipad" >
+							</a>
 						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small2.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small3.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small4.jpg" alt="ipad"></a>
-						</li>
-						<li class="list-item">
-							<a href="#" class="list-item-link"><img src="images/pd-detail/pd_detail_small5.jpg" alt="ipad"></a>
-						</li>
+					<?php } ?>
 					</ul>
 				</div>
 				<div class="info-pd-box">
-					<p class="info-pd-tit"><a href="#">全网底价 Apple 苹果 iPad mini 16G wifi版 平板电脑 前白后银 MD531CH/A 银白两色生产批次不同混合发货</a></p>
+					<p class="info-pd-tit"><a href="#"><?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
+</a></p>
 					<ul class="info-pd-list">
 						<li class="list-item"><span class="list-tit">慕课价</span><div>
-							<span class="price">￥1999.00</span>
+							<span class="price">&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
+</span>
 						</div></li>
 						<li class="list-item"><span class="list-tit">优惠</span><div>
 							<span class="preferential">购ipad加价优惠够配件或USB充电插座</span>
@@ -96,8 +119,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</ul>
 					<div class="pd-choice">已选择<a href="javascript:void(0);">“白色|WIFI 16G”</a></div>
 					<div class="pd-buy">
-						<a href="javacript:void(0);" class="pd-add-shopCar">加入购物车</a>
-						<a href="javacript:void(0);" class="pd-buy-now">立即购买</a>
+						<a href="javascript:void(0);" class="pd-add-shopCar">加入购物车</a>
+						<a href="javascript:void(0);" class="pd-buy-now">立即购买</a>
 					</div>
 					<span class="attention">注意：此商品可提供普通发票，不提供增值税发票。</span>
 				</div>
@@ -158,7 +181,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>强烈推荐</span></h4>
-							<p>现在就是买mini的好时候！换代清仓直降，但苹果品质不变！A5双核，内置Lightning闪电接口，正反可插，方便人性。小身材，炫丽的7.9英寸显示屏，7.2mm的厚度，薄如铅笔。女生包包随身携带更时尚！facetime视频通话，与密友24小时畅聊不断线。微信倾力打造，你的智能助理。苹果的牌子就不用我说了，1111补仓，存货不多哦！</p>
+							<p><?php echo $_smarty_tpl->tpl_vars['pDesc']->value;?>
+</p>
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>精美图片</span></h4>
