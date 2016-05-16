@@ -52,6 +52,8 @@ class mysqlidb{
         }
     }
 
+    
+
     /**
      * 查找一条
      * @param  string $query 

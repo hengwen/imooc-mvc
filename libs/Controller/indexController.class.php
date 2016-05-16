@@ -52,6 +52,26 @@
 			
 		}
 		/**
+		 * 显示用户注册页面
+		 */
+		public function registerForm(){
+			VIEW::display('show/register.html');
+		}
+		/**
+		 * 用户注册
+		 */
+		public function register(){
+			$index = M('index');
+			$userInfo = $_POST;
+			$res = $index->checkRegister($userInfo);
+			if ($res) {
+				$this->showmessage($index->mes,"admin.php?controller=index&method=login");
+			}else{
+				$this->showmessage($index->mes,"admin.php?controller=index&method=registerForm");
+			}
+		}
+
+		/**
 		 * 显示返回信息，并进行页面的跳转
 		 * @param  string $mes 
 		 * @param  string $url 
