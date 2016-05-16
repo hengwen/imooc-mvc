@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 15:27:31
+         compiled from "tpl/show/detail.html" */ ?>
+<?php /*%%SmartyHeaderCode:50407547357399f8e34a9a9-84439589%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '6322a458b0cb8c7d29660227cd0315b5d45cd298' => 
+    array (
+      0 => 'tpl/show/detail.html',
+      1 => 1463405248,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '50407547357399f8e34a9a9-84439589',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57399f8e44a172_23296643',
+  'variables' => 
+  array (
+    'bigPath' => 0,
+    'proImage' => 0,
+    'i' => 0,
+    'images' => 0,
+    'pName' => 0,
+    'iPrice' => 0,
+    'pDesc' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_57399f8e44a172_23296643')) {function content_57399f8e44a172_23296643($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,9 +45,12 @@
 </head>
 <body>
 	<header class="header">
-		{include file="show/top.html"}
-		{include file="show/logo-search.html"}
-		{include file="show/nav.html"}
+		<?php echo $_smarty_tpl->getSubTemplate ("show/top.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+		<?php echo $_smarty_tpl->getSubTemplate ("show/logo-search.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+		<?php echo $_smarty_tpl->getSubTemplate ("show/nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 	</header>
 	<div class="detail-wrap">
 		<div class="inner-center">
@@ -25,25 +59,37 @@
 				<div class="info-img">
 				
 					<div class="img-big">
-						<a href={"uploads/proImg/"|cat:$bigPath} class="jqzoom" rel='gal1'  title="triumph"><img src={"uploads/proImg/images300/"|cat:$bigPath} alt="ipad" title="triumph"></a>
+						<a href=<?php echo ("uploads/proImg/").($_smarty_tpl->tpl_vars['bigPath']->value);?>
+ class="jqzoom" rel='gal1'  title="triumph"><img src=<?php echo ("uploads/proImg/images300/").($_smarty_tpl->tpl_vars['bigPath']->value);?>
+ alt="ipad" title="triumph"></a>
 					</div>
 					<ul class="info-img-list" id="thumblist">
-					{foreach key=i item=images from=$proImage}
+					<?php  $_smarty_tpl->tpl_vars['images'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['images']->_loop = false;
+ $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['proImage']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['images']->key => $_smarty_tpl->tpl_vars['images']->value) {
+$_smarty_tpl->tpl_vars['images']->_loop = true;
+ $_smarty_tpl->tpl_vars['i']->value = $_smarty_tpl->tpl_vars['images']->key;
+?>
 
 						<li class="list-item" >
-							<a href="javascript:void(0);" {if $i eq 0} class="zoomThumbActive list-item-link current" {else} class="list-item-link current" {/if} 
-							{literal} rel="{gallery: 'gal1', smallimage: '{/literal}{"uploads/proImg/images300/"|cat:$images.albumPath|cat:"', largeimage: '"|cat:"uploads/proImg/"|cat:$images.albumPath}{literal}'}" {/literal}>
-								<img  src={"uploads/proImg/images50/"|cat:$images.albumPath} alt="ipad" >
+							<a href="javascript:void(0);" <?php if ($_smarty_tpl->tpl_vars['i']->value==0) {?> class="zoomThumbActive list-item-link current" <?php } else { ?> class="list-item-link current" <?php }?> 
+							 rel="{gallery: 'gal1', smallimage: '<?php echo (((("uploads/proImg/images300/").($_smarty_tpl->tpl_vars['images']->value['albumPath'])).("', largeimage: '")).("uploads/proImg/")).($_smarty_tpl->tpl_vars['images']->value['albumPath']);?>
+'}" >
+								<img  src=<?php echo ("uploads/proImg/images50/").($_smarty_tpl->tpl_vars['images']->value['albumPath']);?>
+ alt="ipad" >
 							</a>
 						</li>
-					{/foreach}
+					<?php } ?>
 					</ul>
 				</div>
 				<div class="info-pd-box">
-					<p class="info-pd-tit"><a href="#">{$pName}</a></p>
+					<p class="info-pd-tit"><a href="#"><?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
+</a></p>
 					<ul class="info-pd-list">
 						<li class="list-item"><span class="list-tit">慕课价</span><div>
-							<span class="price">&yen;{$iPrice}</span>
+							<span class="price">&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
+</span>
 						</div></li>
 						<li class="list-item"><span class="list-tit">优惠</span><div>
 							<span class="preferential">购ipad加价优惠够配件或USB充电插座</span>
@@ -135,7 +181,8 @@
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>产品参数</span></h4>
-							<p>{$pDesc}</p>
+							<p><?php echo $_smarty_tpl->tpl_vars['pDesc']->value;?>
+</p>
 						</div>
 						<div class="intro-section">
 							<h4 class="intro-section-tit"><span>精美图片</span></h4>
@@ -427,6 +474,7 @@
 		</div>
 	</div>
 
-	{include file="show/footer.html"}
+	<?php echo $_smarty_tpl->getSubTemplate ("show/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 </body>
-</html>
+</html><?php }} ?>

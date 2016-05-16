@@ -114,6 +114,24 @@ $(document).ready(function() {
 		var order = $("#pd-pubtime").val();
 		window.location.href = "admin.php?controller=admin&method=showList&tab=1&p=1&order="+order;
 	});
+	/**
+	 *当点击后台商品图片列表的文字水印操作时，传递一个商品的id号
+	 */
+	$("input[value='文字水印']").click(function() {
+		var id = $(this).attr('data');
+		if (window.confirm("您确定要添加文字水印吗？")) {
+			window.location.href = "admin.php?controller=admin&method=fontMark&id="+id;
+		}
+	});
+	/**
+	 *当点击后台商品图片列表的图片水印操作时，传递一个商品的id号
+	 */
+	$("input[value='图片水印']").click(function() {
+		var id = $(this).attr('data');
+		if (window.confirm("您确定要添加图片水印吗？")) {
+			window.location.href = "admin.php?controller=admin&method=imageMark&id="+id;
+		}
+	});
 });
 
 	

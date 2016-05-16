@@ -21,6 +21,7 @@
 			$fun = "imagecreatefrom".$this->type;
 			$this->image = $fun($src);
 		}
+		
 		/**
 		 * 生成指定大小的缩略图
 		 * @param  int $width  
@@ -49,7 +50,8 @@
 			//获得水印字的颜色
 			$fontcolor = imagecolorallocatealpha($this->image, $color['r'], $color['g'], $color['b'], $alpha);
 			imagettftext($this->image, $fontsize, $angle, $location['x'], $location['y'], $fontcolor, $fontfile, $content);
-
+			$this->savaMark();
+			$this->destory($this->image);
 		}
 		/**
 		 * 图片水印
@@ -64,6 +66,9 @@
 			$water = $fun($source);
 			imagecopymerge($this->image, $water, $location['x'], $location['y'], 0, 0, $info[0], $info[1], $alpha);
 			imagedestroy($water);
+			$this->savaMark();
+			$this->destory($this->image);
+			
 		}
 		/**
 		 * 在浏览器中显示图片
@@ -83,6 +88,12 @@
 				mkdir($path,0777,true);
 			}
 			$func($this->cramping,"uploads/proImg/images".$this->width."/".$this->filename);
+		}
+		public function savaMark(){
+			$func = "image".$this->type;
+			$path = "uploads/proImg/images".$this->info['width'];
+			$func($this->image,$path."/".$this->filename);
+			
 		}
 		/**
 		 * 销毁指定图片图片资源

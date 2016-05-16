@@ -316,6 +316,32 @@
 					$this->showmessage("删除失败！！","admin.php?controller=admin&method=showList&tab=2&p=1");
 				}
 			}
+			/**
+			 * 商品图片管理添加文字水印
+			 */
+			public function fontMark(){
+				$id = $_GET['id'];
+				$model = M('admin');
+				$res = $model->fontMark($id);
+				if($res){
+					$this->showmessage("成功!!","admin.php?controller=admin&method=showList&tab=5&p=1");
+				}else{
+					$this->showmessage("失败!!","admin.php?controller=admin&method=showList&tab=5&p=1");
+				}
+			}
+			/**
+			 * 商品图片管理添加图片水印
+			 */
+			public function imageMark(){
+				$id = $_GET['id'];
+				$model = M('admin');
+				$res = $model->imageMark($id);
+				if($res){
+					$this->showmessage("成功!!","admin.php?controller=admin&method=showList&tab=5&p=1");
+				}else{
+					$this->showmessage("失败!!","admin.php?controller=admin&method=showList&tab=5&p=1");
+				}
+			}
 		
 	}
 

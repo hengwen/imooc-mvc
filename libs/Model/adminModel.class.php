@@ -244,8 +244,54 @@
 
 			return true;
 		}
+		/**
+		 * 根据商品id获得商品图片的路径
+		 */
+		public function getImagePath($id){
+			$sql = "select albumPath from imooc_album where pId='".$id."'";
+			$result = DB::fetchAll($sql);
+			foreach ($result as $imageName) {
+				// $path[] = "uploads/proImg/".$imageName['albumPath'];
+				// $path50[] = "uploads/proImg/images50/".$imageName['albumPath'];
+				// $path100[] = "uploads/proImg/image100/".$imageName['albumPath'];
+				// $path200[] = "uploads/proImg/images200/".$imageName['albumPath'];
+				$path300[] = "uploads/proImg/images300/".$imageName['albumPath'];
+			}
+			return $path300;
+		}
+		/**
+		 * 商品图片管理添加文字水印
+		 */
+		public function fontMark($id){
+			$image = M('image');
+			$path300 = $this->getImagePath($id);
+			$fontfile = "fonts/SIMYOU.TTF";
+			$fontsize = 20;
+			$angle = 5;
+			$content = "慕课网";
+			$color = array('r'=>255,'g'=>255,'b'=>255);
+			$alpha = 50;
+			$location = array('x'=>100,'y'=>130);
+			foreach ($path300 as $src) {
+				$image->construct($src);
+				$image->fontMark($fontfile,$fontsize,$angle,$content,$color,$alpha,$location);
+			}
+			return true;
+			
+		}
 
-
+		public function imageMark($id){
+			$image = M('image');
+			$path300 = $this->getImagePath($id);
+			$source = "images/imooc.png";
+			$location = array('x'=>100,'y'=>100);
+			$alpha = 50;
+			foreach ($path300 as $src) {
+				$image->construct($src);
+				$image->imageMark($source,$location,$alpha);
+			}
+			return true;
+		}
 
 
 

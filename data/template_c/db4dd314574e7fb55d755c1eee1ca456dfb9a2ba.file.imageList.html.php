@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:15:27
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 14:06:01
          compiled from "tpl/admin/imageList.html" */ ?>
 <?php /*%%SmartyHeaderCode:144118013657399a6982cd04-57323918%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db4dd314574e7fb55d755c1eee1ca456dfb9a2ba' => 
     array (
       0 => 'tpl/admin/imageList.html',
-      1 => 1463393726,
+      1 => 1463395257,
       2 => 'file',
     ),
   ),
@@ -30,16 +30,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57399a69882862_50267345')) {function content_57399a69882862_50267345($_smarty_tpl) {?><div class="table-op-top">
-						<div class="add">
-							<a href="admin.php?controller=admin&method=showAddForm&tab=6" >添加</a>
-						</div>
+						
 					</div>
 					<table class="pd-manage">
 						<tr>
 							<th width="5%">商品id</th>
-							<th width="30%">商品名称</th>
+							<th width="25%">商品名称</th>
 							<th width="30%">商品图片</th>
-							<th width="35%">操作</th>
+							<th width="40%">操作</th>
 						</tr>
 						<?php  $_smarty_tpl->tpl_vars['list'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['list']->_loop = false;
  $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;
@@ -71,14 +69,17 @@ $_smarty_tpl->tpl_vars['path']->_loop = true;
 											<img src=<?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['path']->value['albumPath'];?>
 <?php $_tmp1=ob_get_clean();?><?php echo ("uploads/proImg/images50/").($_tmp1);?>
  alt="商品图片">
-											
 										<?php } ?>
 									</td>
 									<td>
-										<input type="button" class="pd-list-op" value="添加" > 
-										<input type="button" class="pd-list-op" value="删除">
-										<input type="button" class="pd-list-op" value="文字水印">
-										<input type="button" class="pd-list-op" value="图片水印">
+										<input type="button" class="pd-list-op" value="添加图片"  data=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+> 
+										<input type="button" class="pd-list-op" value="删除图片" data=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+>
+										<input type="button" class="pd-list-op" value="文字水印"  data=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+>
+										<input type="button" class="pd-list-op" value="图片水印" data=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+>
 									</td>
 								</tr>
 							<?php } ?>

@@ -1,14 +1,12 @@
 <div class="table-op-top">
-						<div class="add">
-							<a href="admin.php?controller=admin&method=showAddForm&tab=6" >添加</a>
-						</div>
+						
 					</div>
 					<table class="pd-manage">
 						<tr>
 							<th width="5%">商品id</th>
-							<th width="30%">商品名称</th>
+							<th width="25%">商品名称</th>
 							<th width="30%">商品图片</th>
-							<th width="35%">操作</th>
+							<th width="40%">操作</th>
 						</tr>
 						{foreach key=i item=list from=$result}
 							{foreach key=j item=paths from=$list}
@@ -20,14 +18,13 @@
 									<td>
 										{foreach item=path from=$paths}
 											<img src={"uploads/proImg/images50/"|cat:{$path.albumPath}} alt="商品图片">
-											
 										{/foreach}
 									</td>
 									<td>
-										<input type="button" class="pd-list-op" value="添加" > 
-										<input type="button" class="pd-list-op" value="删除">
-										<input type="button" class="pd-list-op" value="文字水印">
-										<input type="button" class="pd-list-op" value="图片水印">
+										<input type="button" class="pd-list-op" value="添加图片"  data={$i}> 
+										<input type="button" class="pd-list-op" value="删除图片" data={$i}>
+										<input type="button" class="pd-list-op" value="文字水印"  data={$i}>
+										<input type="button" class="pd-list-op" value="图片水印" data={$i}>
 									</td>
 								</tr>
 							{/foreach}
