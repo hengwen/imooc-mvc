@@ -33,7 +33,7 @@
 		 */
 		private function checklogin(){
 			$authobj = M('auth');
-			if($authobj->loginsubmit()){
+			if($authobj->loginsubmit('admin')){
 				$this->showmessage($authobj->mes,'admin.php?controller=admin&method=index');
 			}else{
 				$this->showmessage($authobj->mes,'admin.php?controller=admin&method=login');

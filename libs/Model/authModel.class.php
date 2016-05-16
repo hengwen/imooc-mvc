@@ -3,8 +3,9 @@
  	//当前管理员的信息
  	private $auth = "";
  	public $mes = "";
- 	public function loginsubmit(){
+ 	public function loginsubmit($obj){
  		if(empty($_POST['username'])&&empty($_POST['password'])&&empty($_POST['verify'])){
+ 			$this->mes = "请填写完整信息！";
  			return false;
  		}
  		$username = addslashes($_POST['username']);
@@ -13,7 +14,7 @@
  		@$autoFlag = addslashes($_POST['autoLogin']);
  		$verify1 = $_SESSION['verify'];
  		if ($verify == $verify1) {
- 			if($this->auth=$this->checkuser($username,$password)){
+ 			if($this->auth=$this->checkuser($obj,$username,$password)){
  				if ($autoFlag) {
  					setcookie("adminId",$this->auth['id'],time()+7*24*3600);
 					setcookie("adminName",$this->auth['username'],time()+7*24*3600);
@@ -30,8 +31,8 @@
  			return false;
  		}
  	}
- 	private function checkuser($username,$password){
- 		$adminobj = M('admin');
+ 	private function checkuser($obj,$username,$password){
+ 		$adminobj = M($obj);
  		$auth = $adminobj->fetchOne_by_username($username);
  		if((!empty($auth))&&$auth['password']==$password){
  			return $auth;

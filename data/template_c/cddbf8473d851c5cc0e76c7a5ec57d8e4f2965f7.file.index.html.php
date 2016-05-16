@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 10:30:33
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 05:30:58
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:53301772573833a9a01187-82365703%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463281795,
+      1 => 1463366917,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_573833a9b6a831_38339535',
   'variables' => 
   array (
     'auth' => 0,
     'path' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_573833a9b6a831_38339535',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_573833a9b6a831_38339535')) {function content_573833a9b6a831_38339535($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<span class="m-name">欢迎您&nbsp;<?php echo $_smarty_tpl->tpl_vars['auth']->value;?>
 
 			</span>
-			<a href="admin.php?controller=admin&method=foreIndex" class="home">首页</a>
+			<a href="admin.php" class="home">首页</a>
 			<a href="#" class="advance">前进</a>
 			<a href="#" class="back">后退</a>
 			<a href="#" class="refresh">刷新</a>

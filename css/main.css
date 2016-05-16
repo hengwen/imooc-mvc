@@ -1438,7 +1438,7 @@ login page
   padding-top: 40px;
   padding-left: 80px;
 }
-.login-form .user, .login-form .password, .login-form .email, .login-form .address, .register-form .user, .register-form .password, .register-form .email, .register-form .address {
+.login-form .user, .login-form .password, .login-form .email, .login-form .address, .login-form .verify, .register-form .user, .register-form .password, .register-form .email, .register-form .address, .register-form .verify {
   width: 310px;
   height: 35px;
   border: 1px solid #ccc;

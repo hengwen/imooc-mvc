@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 04:19:58
+         compiled from "tpl/show/login.html" */ ?>
+<?php /*%%SmartyHeaderCode:43477226657392ae512b842-19316557%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '12080925ee29d7bdb4f835721dab2e2b29e394f3' => 
+    array (
+      0 => 'tpl/show/login.html',
+      1 => 1463365196,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '43477226657392ae512b842-19316557',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57392ae51a1178_77772009',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_57392ae51a1178_77772009')) {function content_57392ae51a1178_77772009($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -45,6 +66,7 @@
 			</form>
 		</div>
 	</div>
-	{include file="show/footer.html"}
+	<?php echo $_smarty_tpl->getSubTemplate ("show/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 </body>
-</html>
+</html><?php }} ?>
