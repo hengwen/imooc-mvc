@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 05:30:58
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:20:12
          compiled from "tpl/admin/index.html" */ ?>
-<?php /*%%SmartyHeaderCode:53301772573833a9a01187-82365703%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:178853321157399a69670102-23787716%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463366917,
+      1 => 1463394011,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '53301772573833a9a01187-82365703',
+  'nocache_hash' => '178853321157399a69670102-23787716',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_573833a9b6a831_38339535',
+  'unifunc' => 'content_57399a697fe077_64679635',
   'variables' => 
   array (
     'auth' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_573833a9b6a831_38339535')) {function content_573833a9b6a831_38339535($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_57399a697fe077_64679635')) {function content_57399a697fe077_64679635($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -35,7 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
 	<div class="bs-top">
 		<div class="inner-center">
-			<div class="back-logo"><img src="images/backstage/logo_b_index.png" alt="慕课网logo"></div>
+			<div class="back-logo"><a href="admin.php?controller=admin&method=index"><img src="images/backstage/logo_b_index.png" alt="慕课网logo"></a></div>
 			<div class="bs-tit">慕课电子商务后台管理系统</div>
 		</div>
 	</div>
@@ -96,6 +96,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<dl id="menu5">
 							<dd><a href="admin.php?controller=admin&method=showAddForm&tab=4">添加管理员</a></dd>
 							<dd><a href="admin.php?controller=admin&method=showList&tab=4&p=1">管理员列表</a></dd>	
+						</dl>
+					</li>
+					<li class="list-item">
+						<h3 onclick="show('menu6','change6')"><span id="change6">+</span>商品图片管理</h3>
+						<dl id="menu6">
+							<!-- <dd><a href="admin.php?controller=admin&method=showAddForm&tab=5">添加管理员</a></dd> -->
+							<dd><a href="admin.php?controller=admin&method=showList&tab=5&p=1">商品图片列表</a></dd>	
 						</dl>
 					</li>
 				</ul>

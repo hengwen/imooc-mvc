@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-15 11:01:28
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:14:01
          compiled from "tpl/admin/proList.html" */ ?>
-<?php /*%%SmartyHeaderCode:18239763395738360802b2a0-25772816%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23572535957399d69befe69-57677681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18239763395738360802b2a0-25772816',
+  'nocache_hash' => '23572535957399d69befe69-57677681',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_573836081ddfb1_47788398',
   'variables' => 
   array (
     'result' => 0,
@@ -26,8 +24,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'page' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57399d69d16978_89328613',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_573836081ddfb1_47788398')) {function content_573836081ddfb1_47788398($_smarty_tpl) {?><div class="table-op-top">
+<?php if ($_valid && !is_callable('content_57399d69d16978_89328613')) {function content_57399d69d16978_89328613($_smarty_tpl) {?><div class="table-op-top">
 	<div class="add">
 		<a href="admin.php?controller=admin&method=showProAddForm&tab=1"  >添加</a>
 	</div>

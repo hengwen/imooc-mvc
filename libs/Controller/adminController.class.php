@@ -102,6 +102,11 @@
 					$this->listPath = 'adminList.html';
 					$this->addPath = 'adminAddForm.html';
 					$this->editPath = 'adminEditForm.html';
+				}elseif($tab == 5){
+					$this->table = 'imooc_album';
+					$this->listPath = 'imageList.html';
+					$this->addPath = 'imageAddForm.html';
+					//$this->editPath = 'adminEditForm.html';
 				}
 		}
 		/**
@@ -146,6 +151,9 @@
 				$result = $list->getProList($this->table,$p,$where,$order);
 				$getProImage = $list->getProImage();  //所有商品图片以及对应的商品id
 				$page = $list->page($keywords,$ord);
+			}elseif($tab==5){
+				$result = $list->getImageList("imooc_pro",$p); //根据商品的个数分页显示
+				$page = $list->page();
 			}else{
 				$result = $list->getList($this->table,$p);
 				$page = $list->page();

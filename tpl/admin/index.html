@@ -9,7 +9,7 @@
 <body>
 	<div class="bs-top">
 		<div class="inner-center">
-			<div class="back-logo"><img src="images/backstage/logo_b_index.png" alt="慕课网logo"></div>
+			<div class="back-logo"><a href="admin.php?controller=admin&method=index"><img src="images/backstage/logo_b_index.png" alt="慕课网logo"></a></div>
 			<div class="bs-tit">慕课电子商务后台管理系统</div>
 		</div>
 	</div>
@@ -69,6 +69,13 @@
 						<dl id="menu5">
 							<dd><a href="admin.php?controller=admin&method=showAddForm&tab=4">添加管理员</a></dd>
 							<dd><a href="admin.php?controller=admin&method=showList&tab=4&p=1">管理员列表</a></dd>	
+						</dl>
+					</li>
+					<li class="list-item">
+						<h3 onclick="show('menu6','change6')"><span id="change6">+</span>商品图片管理</h3>
+						<dl id="menu6">
+							<!-- <dd><a href="admin.php?controller=admin&method=showAddForm&tab=5">添加管理员</a></dd> -->
+							<dd><a href="admin.php?controller=admin&method=showList&tab=5&p=1">商品图片列表</a></dd>	
 						</dl>
 					</li>
 				</ul>

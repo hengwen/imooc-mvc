@@ -32,7 +32,7 @@ class listModel{
 		
 		$this->page_banner = "";
 		//$this->page = $p;
-		$this->page_size =3;
+		$this->page_size =5;
 		// $this->start = ($this->page-1)*$this->page_size;
 		// $this->total = DB::getTotal($this->table);
 		// $this->page_total = ceil($this->total/$this->page_size);
@@ -79,6 +79,25 @@ class listModel{
 			$arr[$value['id']] = $album;
 		}
 		return $arr;
+	}
+
+	/**
+	 * 获得图片以及商品信息，构建一个三维数组[商品id][商品名称][图片名称数组（可能多张图片）]
+	 */
+	public function getImageList($table,$p){
+		$this->table = $table;
+		$this->page = $p;
+		$this->start = ($this->page-1)*$this->page_size;
+
+		$sql1 = "select id,pName from imooc_pro order by id LIMIT ".$this->start.",".$this->page_size;;
+		$products = DB::fetchAll($sql1);
+		foreach ($products as $product) {
+			$sql2 = "select albumPath from imooc_album where pId='".$product['id']."'";
+			$paths[$product['id']][$product['pName']] = DB::fetchAll($sql2);
+		}
+		// print_r($paths);
+		// exit;
+		return $paths;
 	}
 		/**
 		 * 页码导航条
