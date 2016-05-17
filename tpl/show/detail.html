@@ -10,7 +10,23 @@
 	<script src="scripts/jquery.jqzoom.js"></script>
 	<link rel="stylesheet" href="css/jqzoom.css">
 	<script src="scripts/main.js"></script>
-
+	{literal}
+		<script>
+			//商品详情页jqzoom效果
+			$(function(){
+				$('.jqzoom').jqzoom({
+			    zoomType: 'standard',
+			    lens:true,
+			    preloadImages: false,
+			    alwaysOn:false,
+					title:false,
+					zoomWidth:410,
+					zoomHeight:410
+			  });
+			});
+			
+		</script>
+	{/literal}
 </head>
 <body>
 	<header class="header">

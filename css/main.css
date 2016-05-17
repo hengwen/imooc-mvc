@@ -274,26 +274,34 @@ mooc home page!
   position: relative;
   overflow: hidden;
 }
-.img-box .banner-btn {
+.img-box .img-list {
+  position: absolute;
+}
+.img-box .currentNum, .img-box .currentNum-pro {
   position: absolute;
   left: 50%;
-  bottom: 20px;
-  margin-left: -30px;
+  bottom: 30px;
+  margin-left: -35px;
+  width: 70px;
+  height: 11px;
+  text-align: center;
 }
-.img-box .banner-btn a {
+.img-box .imgNum, .img-box .imgNum1 {
+  width: 9px;
+  height: 9px;
+  border-radius: 9px;
+  background-color: #eee;
   display: inline-block;
-  width: 25px;
-  height: 5px;
-  margin-right: 5px;
-  background: #fff;
+  cursor: pointer;
 }
-.img-box .banner-btn .current {
-  background: #ff8c00;
+.img-box .mark-color {
+  background-color: #f40;
 }
 
 .section-banner .img-box {
   float: right;
   width: 811px;
+  height: 325px;
 }
 .section-banner .img-list {
   width: 1622px;
@@ -329,6 +337,7 @@ mooc home page!
 
 .product-ad .img-box {
   width: 189px;
+  height: 401px;
 }
 .product-ad .img-list {
   width: 378px;

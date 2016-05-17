@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 15:27:31
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 12:26:41
          compiled from "tpl/show/detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:50407547357399f8e34a9a9-84439589%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6322a458b0cb8c7d29660227cd0315b5d45cd298' => 
     array (
       0 => 'tpl/show/detail.html',
-      1 => 1463405248,
+      1 => 1463480799,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="scripts/jquery.jqzoom.js"></script>
 	<link rel="stylesheet" href="css/jqzoom.css">
 	<script src="scripts/main.js"></script>
-
+	
+		<script>
+			//商品详情页jqzoom效果
+			$(function(){
+				$('.jqzoom').jqzoom({
+			    zoomType: 'standard',
+			    lens:true,
+			    preloadImages: false,
+			    alwaysOn:false,
+					title:false,
+					zoomWidth:410,
+					zoomHeight:410
+			  });
+			});
+			
+		</script>
+	
 </head>
 <body>
 	<header class="header">

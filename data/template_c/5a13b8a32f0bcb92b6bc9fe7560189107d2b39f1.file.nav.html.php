@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:23:10
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 11:53:23
          compiled from "tpl/show/nav.html" */ ?>
 <?php /*%%SmartyHeaderCode:31816056157399f8e49ff74-84330459%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5a13b8a32f0bcb92b6bc9fe7560189107d2b39f1' => 
     array (
       0 => 'tpl/show/nav.html',
-      1 => 1463312221,
+      1 => 1463478703,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1-DEV',
   'unifunc' => 'content_57399f8e4c4ac9_40830734',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57399f8e4c4ac9_40830734')) {function content_57399f8e4c4ac9_40830734($_smarty_tpl) {?><nav class="nav">
 	<div class="inner-center">
 		<div class="shop-class">
-			<h1><a href="#">全部商品分类</a></h1>
+			<h1><a href="#" id="all-class">全部商品分类</a></h1>
 			<div class="shop-class-info">
 				<dl class="shop-class-list">
 					<dt class="list-tt">

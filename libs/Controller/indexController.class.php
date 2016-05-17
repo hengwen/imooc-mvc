@@ -115,6 +115,20 @@
 			VIEW::assign(array('proImage'=>$proImage,'bigPath'=>$proOneImageName,'auth'=>$this->auth));
 			VIEW::display('show/detail.html');
 		}
+		/**
+		 * 展示分类页
+		 */
+		public function sort(){
+			VIEW::assign(array('auth'=>$this->auth));
+			VIEW::display('show/sort.html');
+		}
+		/**
+		 * 展示筛选页
+		 */
+		public function filter(){
+			VIEW::assign(array('auth'=>$this->auth));
+			VIEW::display('show/filter.html');
+		}
 
 
 
