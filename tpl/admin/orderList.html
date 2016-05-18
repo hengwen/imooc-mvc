@@ -1,0 +1,107 @@
+<div class="table-op-top">
+	<div class="add">
+		<a href="admin.php?controller=admin&method=showProAddForm&tab=1"  >添加</a>
+	</div>
+	<div class="table-op">
+		<label>订单状态：
+			<span class="select-box">
+				<select id="order-active">
+					<option value="">请选择</option>
+					<option value="active desc">已完成</option>
+					<option value="active asc">未完成</option>
+				</select>
+			</span>
+		</label>
+		<label>订单时间：
+			<span class="select-box">
+				<select id="order-time">
+					<option value="">请选择</option>
+					<option value="indentTime desc">最新订单</option>
+					<option value="indentTime asc">最早订单</option>
+				</select>
+			</span>
+		</label>
+		<label>搜索：<input type="text" name="search" class="search" id="order-search"></label>
+	</div>
+</div>
+<table class="pd-manage">
+	<tr>
+		<th width="5%">订单号</th>
+		<th width="10%">用户名称</th>
+		<th width="30%">商品名称</th>
+		<th width="5%">商品数量</th>
+		<th width="10%">总价</th>
+		<th width="10%">订单时间</th>
+        <th width="10%">订单状态</th>
+		<th width="20%">操作</th>
+	</tr>
+	{foreach item=list from=$result}
+		<tr>
+			<td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label>{$list['id']}</td>
+			<td>{$list['username']}</td>
+			<td>{$list['pName']}</td>
+			<td>{$list['count']}</td>
+            <td>{$list['indentMon']}</td>
+            <td>{$list['indentTime']}</td>
+			<td>{if $list['active'] eq 1} 完成 {else} 未完成 {/if}</td>
+			<td><input type="button" class="pd-list-op" value="修改"  id="edit-btn" data= {$list['id']} tab="1"	> <input type="button" class="pd-list-op" value="删除" data = {$list['id']} tab='1'>
+				<div id="showDetail{$list['id']}" style="display:none;">
+        	<table class="table" cellspacing="0" cellpadding="0" width="800">
+        		<tr>
+        			<td width="20%" align="right">商品名称</td>
+        			<td>{$list['pName']}</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">商品类别</td>
+        			<td>{$list['cName']}</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">商品货号</td>
+        			<td>{$list['pSn']}</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">商品数量</td>
+        			<td>{$list['pNum']}</td>
+        		</tr>
+        		<tr>
+        			<td  width="20%"  align="right">商品价格</td>
+        			<td>{$list['mPrice']}</td>
+        		</tr>
+        		<tr>
+        			<td  width="20%"  align="right">幕课网价格</td>
+        			<td>{$list['iPrice']}</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">商品图片</td>
+        			<td>
+        			{foreach item=image from=$proImage[{$list['id']}]}
+        					<img width="100" height="100" src= uploads/proImg/{$image['albumPath']} alt="商品图片"/> &nbsp;&nbsp;
+        			{/foreach}
+        			</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">是否上架</td>
+        			<td>
+        				{if $list['isShow'] eq 1} 上架 {else} 下架 {/if}
+        			</td>
+        		</tr>
+        		<tr>
+        			<td width="20%"  align="right">是否热卖</td>
+        			<td>
+        				{if $list['isHot'] eq 1} 热卖 {else} 不热卖 {/if}
+        			</td>
+        		</tr>
+        	</table>
+        	<span style="display:block;width:80%; ">
+        	商品描述: <br/>
+        		{$list['pDesc']}
+        	</span>
+    		</div>
+			</td>
+			
+		</tr>
+		
+	{/foreach}
+</table>
+
+<div class="page">{$page}</div>

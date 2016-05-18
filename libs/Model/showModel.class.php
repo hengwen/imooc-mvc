@@ -1,6 +1,13 @@
 <?php
 class showModel{
-
+	/**
+	 * 根据分类id获得分类名称
+	 */
+	public function getCateName($id){
+		$sql = "select cName from imooc_cate where id = '".$id."'";
+		$result = DB::fetchOne($sql);
+		return $result;
+	}
 	/**
 	 * 获得所有分类
 	 */
@@ -51,7 +58,9 @@ class showModel{
 		$result = DB::fetchAll($sql);
 		return $result;
 	}
-
+	/**
+	 * 根据商品id获取一张商品图片名称
+	 */
 	public function getDetailProImageOne($id){
 		$sql = "select * from imooc_album where pId=".$id;
 		$result = DB::fetchOne($sql);

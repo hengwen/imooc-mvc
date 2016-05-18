@@ -551,7 +551,7 @@
 								{foreach key=j item=paths from=$albumPaths}
 									{if $j eq $pro.id}
 										<li class="list-item" title='{$pro.pName}'>
-											<a href={"admin.php?controller=index&method=detail&id="|cat:$pro.id} class="list-item-link" ><img src={"uploads/proImg/images200/"|cat:$paths.albumPath} alt="product images" class="item-img"></a>
+											<a href={"admin.php?controller=index&method=detail&cate={$cate.id}&id="|cat:$pro.id} class="list-item-link" ><img src={"uploads/proImg/images200/"|cat:$paths.albumPath} alt="product images" class="item-img"></a>
 											<h3 class="item-tt"><a href={"admin.php?controller=index&method=detail&id="|cat:$pro.id} class="item-tt-link">{$pro.pName}</a></h3>
 											<p class="item-text">&yen;{$pro.iPrice}元</p>
 										</li>

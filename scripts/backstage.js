@@ -132,6 +132,30 @@ $(document).ready(function() {
 			window.location.href = "admin.php?controller=admin&method=imageMark&id="+id;
 		}
 	});
+
+	/**
+	 * 为后台订单列表展示中订单的模糊查询传递参数
+	 */
+	$("#order-search").keypress(function(event) {
+		if (event.which == 13) {
+			var keywords = $(this).val();
+		window.location.href = "admin.php?controller=admin&method=showList&tab=6&p=1&val="+keywords;
+		}
+	});
+	/**
+ * 当后台订单列表中的选择按订单状态排列顺序时，向服务器传递一个变量
+ */
+	$("#order-active").change(function() {
+		var order = $(this).val();
+		window.location.href = "admin.php?controller=admin&method=showList&tab=6&p=1&order="+order;
+	});
+	/**
+ * 当后台订单列表中的选择按订单时间排列顺序时，向服务器传递一个变量
+ */
+	$("#order-time").change(function() {
+		var order = $(this).val();
+		window.location.href = "admin.php?controller=admin&method=showList&tab=6&p=1&order="+order;
+	});
 });
 
 	

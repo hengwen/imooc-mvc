@@ -953,6 +953,11 @@ mooc detail page
 			border-right: 1px solid #ccc;
 			background: #f3f3f3;
 		}
+		.indent-num{
+			width: 40px;
+			height: 36px;
+			text-align: center;
+		}
 		.right{
 			@extend .left;
 			float: right;

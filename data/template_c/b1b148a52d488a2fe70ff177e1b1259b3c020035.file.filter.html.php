@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 12:18:19
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 05:58:43
          compiled from "tpl/show/filter.html" */ ?>
 <?php /*%%SmartyHeaderCode:1417507224573aefeb87e017-46721477%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b1b148a52d488a2fe70ff177e1b1259b3c020035' => 
     array (
       0 => 'tpl/show/filter.html',
-      1 => 1463408246,
+      1 => 1463543916,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1-DEV',
   'unifunc' => 'content_573aefeb912d28_23333643',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_573aefeb912d28_23333643')) {function content_573aefeb912d28_23333643($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<title>筛选页</title>
 	<link rel="stylesheet" href="css/meyer-reset.css">
 	<link rel="stylesheet" href="css/main.css">
+	<script src="scripts/jquery-1.12.3.min.js"></script>
+	<script src="scripts/main.js"></script>
 </head>
 <body>
 	<header class="header">

@@ -88,16 +88,38 @@ class listModel{
 		$this->table = $table;
 		$this->page = $p;
 		$this->start = ($this->page-1)*$this->page_size;
-
-		$sql1 = "select id,pName from imooc_pro order by id LIMIT ".$this->start.",".$this->page_size;;
+		$sql1 = "select id,pName from imooc_pro order by id LIMIT ".$this->start.",".$this->page_size;
 		$products = DB::fetchAll($sql1);
 		foreach ($products as $product) {
 			$sql2 = "select albumPath from imooc_album where pId='".$product['id']."'";
 			$paths[$product['id']][$product['pName']] = DB::fetchAll($sql2);
 		}
-		// print_r($paths);
-		// exit;
 		return $paths;
+	}
+	/**
+	 * 获得订单列表数据
+	 */
+	public function getOrderList($table,$p,$where=null,$order=null){
+		$this->table = $table;
+		$this->page = $p;
+		$this->start = ($this->page-1)*$this->page_size;
+		$sql = "select * from imooc_indent i join imooc_indent_pro p on i.id=p.indentId ".$where.$order." LIMIT ".$this->start.",".$this->page_size;
+		$result = DB::fetchAll($sql);
+		if ($result) {
+			foreach ($result as $order) {
+				$sql1 = "select username from imooc_user where id='".$order['uId']."'";
+				$username = DB::fetchOne($sql1);
+				$sql2 = "select pName from imooc_pro where id='".$order['pId']."'";
+				$pName = DB::fetchOne($sql2);
+				$order['username'] = $username['username'];
+				$order['pName'] = $pName['pName'];
+				$res[] = $order;
+			}
+			return $res;
+		}else{
+			return false;
+		}
+		
 	}
 		/**
 		 * 页码导航条

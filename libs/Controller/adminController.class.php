@@ -107,6 +107,10 @@
 					$this->listPath = 'imageList.html';
 					$this->addPath = 'imageAddForm.html';
 					//$this->editPath = 'adminEditForm.html';
+				}elseif($tab == 6){
+					$this->table = "imooc_indent";
+					$this->listPath = "orderList.html";
+					$this->editPath = "orderEditForm.html";
 				}
 		}
 		/**
@@ -154,6 +158,25 @@
 			}elseif($tab==5){
 				$result = $list->getImageList("imooc_pro",$p); //根据商品的个数分页显示
 				$page = $list->page();
+			}elseif($tab == 6){
+				//如果有订单查询，则构建一个模糊查询语句的where部分
+				if (@$_GET['val']) {
+					$keywords = $_GET['val'];
+					$where = " where i.id like '%$keywords%' ";
+				}else{
+					$keywords = null;
+					$where = null;
+				}
+				//如果有订单的排列，则构建一个order部分
+				if (@$ord = $_GET['order']) {
+					$ord = $_GET['order'];
+					$order = " order by i.".$ord;
+				}else{
+					$ord = null;
+					$order = null;
+				}
+				$result = $list->getOrderList($this->table,$p,$where,$order);  //获得订单列表
+				$page = $list->page($keywords,$ord);
 			}else{
 				$result = $list->getList($this->table,$p);
 				$page = $list->page();

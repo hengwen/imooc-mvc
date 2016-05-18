@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 05:43:07
+         compiled from "tpl/show/login.html" */ ?>
+<?php /*%%SmartyHeaderCode:715988597573b247e83e4b3-49113333%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '12080925ee29d7bdb4f835721dab2e2b29e394f3' => 
+    array (
+      0 => 'tpl/show/login.html',
+      1 => 1463542946,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '715988597573b247e83e4b3-49113333',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_573b247e9505b5_06476223',
+  'variables' => 
+  array (
+    'referer' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_573b247e9505b5_06476223')) {function content_573b247e9505b5_06476223($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +39,8 @@
 	</div>
 	<div class="login-box">
 		<div class="inner-center">
-			<form action={"admin.php?controller=index&method=login&referer="|cat:$referer} method="post" class="login-form">
+			<form action=<?php echo ("admin.php?controller=index&method=login&referer=").($_smarty_tpl->tpl_vars['referer']->value);?>
+ method="post" class="login-form">
 				<div>
 					<label>邮箱/用户名/已验证手机<br><input type="text" name="username" class="user" placeholder="example@163.com"></label>
 				</div>
@@ -45,6 +71,7 @@
 			</form>
 		</div>
 	</div>
-	{include file="show/footer.html"}
+	<?php echo $_smarty_tpl->getSubTemplate ("show/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 </body>
-</html>
+</html><?php }} ?>

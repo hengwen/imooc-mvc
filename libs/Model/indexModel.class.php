@@ -49,6 +49,41 @@
 				}
 			}
 		}
+		/**
+		 * 根据用户名称获得用户id
+		 */
+		public function getUserId($username){
+			$sql = "select id from imooc_user where username = '".$username."'";
+			$result = DB::fetchOne($sql);
+			return $result;
+		}
+		/**
+		 * 生成订单
+		 */
+		public function indent($post){
+			$arr1['indentTime'] = date("Y-m-d",time());
+			$arr1['uId'] = $post['uId'];
+			$arr1['indentMon'] = $post['totle'];
+			$result = DB::insert('imooc_indent',$arr1);
+			if ($result) {
+				$arr2['indentId'] = $result;
+				$arr2['pId'] = $post['pId'];
+				$arr2['count'] = $post['num'];
+				$res = DB::insert('imooc_indent_pro',$arr2);
+				if ($res) {
+					return true;
+				}else{
+					$where = "id=".$result;
+					DB::delete('imooc_indent',$where);
+					return false;
+				}
+			}else{
+				return false;
+			}
+			
+
+		}
+
 
 
 	}

@@ -1,4 +1,34 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 08:36:35
+         compiled from "tpl/show/cleaning.html" */ ?>
+<?php /*%%SmartyHeaderCode:357363479573bcd475789c6-55440513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '2e8a77043443195c54a013528fddfab61c7a3166' => 
+    array (
+      0 => 'tpl/show/cleaning.html',
+      1 => 1463553350,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '357363479573bcd475789c6-55440513',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_573bcd47674fe1_85487715',
+  'variables' => 
+  array (
+    'imgPath' => 0,
+    'pName' => 0,
+    'iPrice' => 0,
+    'num' => 0,
+    'uId' => 0,
+    'id' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_573bcd47674fe1_85487715')) {function content_573bcd47674fe1_85487715($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -10,7 +40,8 @@
 </head>
 <body>
 	<header class="header">
-		{include file="show/top.html"}
+		<?php echo $_smarty_tpl->getSubTemplate ("show/top.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 		<div class="logo-search">
 			<div class="inner-center">
 				<div class="logo">
@@ -85,12 +116,17 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td rowspan="2"><img src={"uploads/proImg/images100/"|cat:$imgPath} alt=""></td>
-								<td>{$pName}</td>
-								<td>&yen;{$iPrice}</td>
+								<td rowspan="2"><img src=<?php echo ("uploads/proImg/images100/").($_smarty_tpl->tpl_vars['imgPath']->value);?>
+ alt=""></td>
+								<td><?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
+</td>
+								<td>&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
+</td>
 								<td>&yen;0.00</td>
-								<td>{$num}</td>
-								<td>&yen;{$iPrice*$num|cat:".00"}</td>
+								<td><?php echo $_smarty_tpl->tpl_vars['num']->value;?>
+</td>
+								<td>&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value*($_smarty_tpl->tpl_vars['num']->value).(".00");?>
+</td>
 							</tr>
 							<tr>
 								<td>[赠品] 保鲜盒 抽真空保鲜盒 海信冰洗赠品</td>
@@ -115,17 +151,23 @@
 				<fieldset>
 					<div class="fieldset-tit">订单结算</div>
 					<div class="sum">
-						<div class="sum-price">总计 <span class="big">&yen;{$iPrice*$num|cat:".00"}</span></div>
-						<input type="hidden" name="uId" value={$uId.id}>
-						<input type="hidden" name="pId" value={$id}>
-						<input type="hidden" name="num" value={$num}>
-						<input type="hidden" name="totle" value={$iPrice*$num}>
+						<div class="sum-price">总计 <span class="big">&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value*($_smarty_tpl->tpl_vars['num']->value).(".00");?>
+</span></div>
+						<input type="hidden" name="uId" value=<?php echo $_smarty_tpl->tpl_vars['uId']->value['id'];?>
+>
+						<input type="hidden" name="pId" value=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+>
+						<input type="hidden" name="num" value=<?php echo $_smarty_tpl->tpl_vars['num']->value;?>
+>
+						<input type="hidden" name="totle" value=<?php echo $_smarty_tpl->tpl_vars['iPrice']->value*$_smarty_tpl->tpl_vars['num']->value;?>
+>
 						<input type="submit" value="提交订单" class="submit">
 					</div>
 				</fieldset>
 			</form>
 		</div>
 	</div>
-	{include file="show/footer.html"}
+	<?php echo $_smarty_tpl->getSubTemplate ("show/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 </body>
-</html>
+</html><?php }} ?>

@@ -53,6 +53,23 @@ CREATE TABLE `imooc_album`(
 `pId` int unsigned not null,
 `albumPath` varchar(255) not null
 );
+/*订单表*/
+DROP TABLE IF EXISTS `imooc_indent`;
+CREATE TABLE `imooc_indent`(
+`id` int unsigned auto_increment key,
+`uId` tinyint unsigned not null,
+`active` tinyint(1) not null default 0,
+`indentTime` varchar(20) not null,
+`indentMon` decimal(10,2) not null
+);
+/*订单商品表*/
+DROP TABLE IF EXISTS `imooc_indent_pro`;
+CREATE TABLE `imooc_indent_pro`(
+`id` int unsigned auto_increment key,
+`indentId` int unsigned not null,
+`pId` smallint unsigned not null,
+`count` smallint unsigned not null
+);
 
 /*创建一个管理员hengwen，密码也是hengwen*/
 insert into imooc_admin(username,password,email) values('hengwen','a68e4cd1d7aef80d7db37f7735ac230d','hengweno@163.com');

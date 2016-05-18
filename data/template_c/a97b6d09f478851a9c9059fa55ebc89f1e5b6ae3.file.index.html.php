@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 12:18:17
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 03:16:00
          compiled from "tpl/show/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:51000343657399f8a48e826-81134289%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a97b6d09f478851a9c9059fa55ebc89f1e5b6ae3' => 
     array (
       0 => 'tpl/show/index.html',
-      1 => 1463480295,
+      1 => 1463533777,
       2 => 'file',
     ),
   ),
@@ -609,7 +609,7 @@ $_smarty_tpl->tpl_vars['paths']->_loop = true;
 									<?php if ($_smarty_tpl->tpl_vars['j']->value==$_smarty_tpl->tpl_vars['pro']->value['id']) {?>
 										<li class="list-item" title='<?php echo $_smarty_tpl->tpl_vars['pro']->value['pName'];?>
 '>
-											<a href=<?php echo ("admin.php?controller=index&method=detail&id=").($_smarty_tpl->tpl_vars['pro']->value['id']);?>
+											<a href=<?php echo ("admin.php?controller=index&method=detail&cate=".((string)$_smarty_tpl->tpl_vars['cate']->value['id'])."&id=").($_smarty_tpl->tpl_vars['pro']->value['id']);?>
  class="list-item-link" ><img src=<?php echo ("uploads/proImg/images200/").($_smarty_tpl->tpl_vars['paths']->value['albumPath']);?>
  alt="product images" class="item-img"></a>
 											<h3 class="item-tt"><a href=<?php echo ("admin.php?controller=index&method=detail&id=").($_smarty_tpl->tpl_vars['pro']->value['id']);?>

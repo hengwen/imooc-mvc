@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 12:26:41
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 06:27:45
          compiled from "tpl/show/detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:50407547357399f8e34a9a9-84439589%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6322a458b0cb8c7d29660227cd0315b5d45cd298' => 
     array (
       0 => 'tpl/show/detail.html',
-      1 => 1463480799,
+      1 => 1463545605,
       2 => 'file',
     ),
   ),
@@ -19,12 +19,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_57399f8e44a172_23296643',
   'variables' => 
   array (
+    'cName' => 0,
     'bigPath' => 0,
     'proImage' => 0,
     'i' => 0,
     'images' => 0,
     'pName' => 0,
+    'mPrice' => 0,
     'iPrice' => 0,
+    'pNum' => 0,
+    'id' => 0,
     'pDesc' => 0,
   ),
   'has_nocache_code' => false,
@@ -37,7 +41,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<link rel="stylesheet" href="css/meyer-reset.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="scripts/jquery-1.12.3.min.js"></script>
-
 	<script src="scripts/jquery.jqzoom.js"></script>
 	<link rel="stylesheet" href="css/jqzoom.css">
 	<script src="scripts/main.js"></script>
@@ -70,7 +73,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</header>
 	<div class="detail-wrap">
 		<div class="inner-center">
-			<div class="detail-top"><a href="#">首页</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">平板电脑</a>&nbsp;&gt;&nbsp;<a href="#">Apple 苹果</a>&nbsp;&gt;&nbsp;<a href="#">MD531CH/A</a></div>
+			<div class="detail-top"><a href="#">首页</a>&nbsp;&gt;&nbsp;<a href="#"><?php echo $_smarty_tpl->tpl_vars['cName']->value;?>
+</a>&nbsp;&gt;&nbsp;<a href="#">Apple 苹果</a>&nbsp;&gt;&nbsp;<a href="#">MD531CH/A</a></div>
 			<div class="dt-info">
 				<div class="info-img">
 				
@@ -103,10 +107,18 @@ $_smarty_tpl->tpl_vars['images']->_loop = true;
 					<p class="info-pd-tit"><a href="#"><?php echo $_smarty_tpl->tpl_vars['pName']->value;?>
 </a></p>
 					<ul class="info-pd-list">
-						<li class="list-item"><span class="list-tit">慕课价</span><div>
+						<li class="list-item">
+							<span class="list-tit">市场价</span>
+							<div>
+								<s class="price">&yen;<?php echo $_smarty_tpl->tpl_vars['mPrice']->value;?>
+</s>
+							</div>
+							<span class="list-tit">慕课价</span>
+							<div>
 							<span class="price">&yen;<?php echo $_smarty_tpl->tpl_vars['iPrice']->value;?>
 </span>
-						</div></li>
+							</div>
+						</li>
 						<li class="list-item"><span class="list-tit">优惠</span><div>
 							<span class="preferential">购ipad加价优惠够配件或USB充电插座</span>
 						</div></li>
@@ -130,13 +142,23 @@ $_smarty_tpl->tpl_vars['images']->_loop = true;
 							</div>
 							
 						</li>
-						<li class="list-item"><span class="list-tit">数量</span>
-						<div><span class="num"><a href="javascript:void(0);" class="left">-</a>1<a href="javascript:void(0);" class="right">+</a></span>限购<a href="javascript:void(0);" class="limit-num">9</a>件</div></li>
+						<li class="list-item">
+							<span class="list-tit">数量</span>
+							<div>
+								<span class="num">
+									<a href="javascript:void(0);" class="left" id="indent-num-down">-</a>
+									<input type="text" value="1" id="indent-num" class="indent-num">
+									<a href="javascript:void(0);" class="right" id="indent-num-up">+</a>
+								</span>库存<a href="javascript:void(0);" class="limit-num" id="limit-num"><?php echo $_smarty_tpl->tpl_vars['pNum']->value;?>
+</a>件
+							</div>
+						</li>
 					</ul>
 					<div class="pd-choice">已选择<a href="javascript:void(0);">“白色|WIFI 16G”</a></div>
 					<div class="pd-buy">
 						<a href="javascript:void(0);" class="pd-add-shopCar">加入购物车</a>
-						<a href="javascript:void(0);" class="pd-buy-now">立即购买</a>
+						<a href="javascript:void(0);" class="pd-buy-now" id="pd-buy-now" data=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+>立即购买</a>
 					</div>
 					<span class="attention">注意：此商品可提供普通发票，不提供增值税发票。</span>
 				</div>

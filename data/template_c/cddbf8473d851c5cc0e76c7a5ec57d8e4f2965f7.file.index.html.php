@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:29:17
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 09:25:36
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:178853321157399a69670102-23787716%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463394448,
+      1 => 1463555308,
       2 => 'file',
     ),
   ),
@@ -77,11 +77,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<li class="list-item">
 						<h3 onclick="show('menu3','change3')"><span id="change3">+</span>订单管理</h3>
 						<dl id="menu3">
-							<dd><a href="#">订单修改</a></dd>
-							<dd><a href="#">订单修改</a></dd>
-							<dd><a href="#">订单修改</a></dd>
-							<dd><a href="#">订单修改</a></dd>
-							<dd><a href="#">订单修改</a></dd>
+							<dd><a href="admin.php?controller=admin&method=showList&tab=6&p=1">订单列表</a></dd>
 						</dl>
 					</li>
 					<li class="list-item">

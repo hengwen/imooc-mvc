@@ -1,7 +1,7 @@
 <?php
 	class indexController{
 		private $auth;   //保存当前用户
-		private $url;   //保存当前相对网址
+		private $url;   //保存
 		public function __construct(){
 			if((isset($_SESSION['auth']))){
 				$this->auth = isset($_SESSION['auth'])?$_SESSION['auth']:"";
@@ -12,6 +12,8 @@
 			if($_POST){
 				$this->checklogin();
 			}else{
+				$url = urlencode($_GET['referer']);
+				VIEW::assign(array('referer'=>$url));
 				VIEW::display('show/login.html');
 			}
 		}
@@ -25,11 +27,12 @@
 		 * 如果登入成功则提示登录成功，并跳转到首页
 		 */
 		public function checklogin(){
+			$url = $_GET['referer'];
 			$authobj = M('auth');
 			if($authobj->loginsubmit('index')){
-				$this->showmessage($authobj->mes,"admin.php");
+				$this->showmessage($authobj->mes,$url);
 			}else{
-				$this->showmessage($authobj->mes,"admin.php");
+				$this->showmessage($authobj->mes,"admin.php?controller=index&method=login");
 			}
 		}
 
@@ -38,6 +41,7 @@
 		 * @return string 
 		 */
 		public function logout(){
+			$url = $_GET['referer'];
 			unset($_SESSION['auth']);
 			if (isset($_COOKIE[session_name()])) {
 				setcookie(session_name(),"",time()-1);
@@ -48,7 +52,7 @@
 			if (isset($_COOKIE['adminName'])) {
 				setcookie('adminName',"",time()-1);
 			}
-			$this->showmessage("退出成功！","admin.php");
+			$this->showmessage("退出成功！",$url);
 			
 		}
 		/**
@@ -81,6 +85,10 @@
 				echo "<script>alert('$mes')</script>";
 				echo "<script>window.location.href='$url'</script>";
 		}
+
+		private function changeUrl($url){
+				echo "<script>window.location.href='$url'</script>";
+		}
 		
 		/**
 		 * 首页展示
@@ -106,12 +114,17 @@
 		public function detail(){
 			// $this->getUrl();
 			// var_dump($this->url);
-			$id = $_GET['id'];
+			$id = $_GET['id'];  //商品id
+			$cId = $_GET['cate'];  //分类id
 			$show = M('show');
+			$cName = $show->getCateName($cId); //商品名称数组
+			// print_r($cName);
+			// exit;
 			$proInfo = $show->getDetailProInfo($id);
 			$proOneImageName = $show->getDetailProImageOne($id);
 			$proImage = $show->getDetailProImage($id);
 			VIEW::assign($proInfo);
+			VIEW::assign($cName);
 			VIEW::assign(array('proImage'=>$proImage,'bigPath'=>$proOneImageName,'auth'=>$this->auth));
 			VIEW::display('show/detail.html');
 		}
@@ -128,6 +141,37 @@
 		public function filter(){
 			VIEW::assign(array('auth'=>$this->auth));
 			VIEW::display('show/filter.html');
+		}
+		/**
+		 * 点击立即购买，显示结算页面
+		 */
+		public function buyNow(){
+			$url = urlencode($_GET['referer']);
+			if($this->auth == ""){
+				$this->showmessage("请先登录！","admin.php?controller=index&method=login&referer=".$url);
+			}
+			$pId = $_GET['pId'];
+			$num = $_GET['num'];
+			$model = M('index');
+			$uId = $model->getUserId($this->auth);
+			$show = M('show');
+			$proInfo = $show->getDetailProInfo($pId);
+			$image = $show->getDetailProImageOne($pId);
+			VIEW::assign($proInfo);
+			VIEW::assign(array('auth'=>$this->auth,'imgPath'=>$image,'num'=>$num,'uId'=>$uId));
+			VIEW::display('show/cleaning.html');
+		}
+		/**
+		 * 提交订单
+		 */
+		public function indent(){
+			$index = M('index');
+			$res = $index->indent($_POST);
+			if ($res) {
+				$this->showmessage("购买成功！","admin.php");
+			}else{
+				$this->showmessage("购买失败！","admin.php");
+			}
 		}
 
 
