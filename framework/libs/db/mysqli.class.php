@@ -93,8 +93,8 @@ class mysqlidb{
     /**
      * 获取数据总条数
      */
-    function getTotal($table){
-        $sql = "select count(*) from ".$table;
+    function getTotal($table,$where=null){
+        $sql = "select count(*) from ".$table.$where;
         $result = $this->query($sql);
         $total_num = $this->fetchOne($result);
         return $total_num['count(*)'];

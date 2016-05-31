@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-17 16:11:13
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-24 12:42:52
          compiled from "tpl/admin/login.html" */ ?>
 <?php /*%%SmartyHeaderCode:1821742697573b2681289608-47533437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6f35e97b5747996f7520d7ee6b7eecb5de151b64' => 
     array (
       0 => 'tpl/admin/login.html',
-      1 => 1463408246,
+      1 => 1464086570,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1-DEV',
   'unifunc' => 'content_573b26812ee079_56188500',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_573b26812ee079_56188500')) {function content_573b26812ee079_56188500($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<label>验证码<br><input type="text" name="verify" class="vertify"></label>
 					</div>
 					
-					<img src ="verify.php" alt="验证码" class="vertify-img">
+					<img src ="getVerify.php" alt="验证码" class="vertify-img">
 					<div>
 						<label><input type="checkbox" name="autoLogin" class="auto-login" >自动登陆(一周内自动登录)</label>&nbsp;
 					</div>

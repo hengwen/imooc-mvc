@@ -76,7 +76,7 @@ $(function(){
 	$('#pd-buy-now').click(function() {
 		var pId = $(this).attr('data');
 		var num = $('#indent-num').val();
-		window.location.href = "admin.php?controller=index&method=buyNow&pId="+pId+"&num="+num+"&referer="+encodeURIComponent(window.location.href);
+		window.location.href = "admin.php?controller=index&method=buyNow&id="+pId+"&num="+num+"&referer="+encodeURIComponent(window.location.href);
 
 	});
 	//商品详细页显示评价或商品详情

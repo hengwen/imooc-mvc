@@ -1,10 +1,13 @@
 <?php
-class listModel{
+/**
+ * 分页类
+ */
+class Page{
 	//显示的表名
 	private $table;
 	
 	//每页条数
-	private $page_size;
+	private $page_size = 5;
 	//当前页
 	private $page;
 	//每页显示的起始条数
@@ -14,123 +17,38 @@ class listModel{
 	//总页数
 	private $page_total;
 	//导航条显示的页码个数
-	private $show_page;
+	private $show_page = 5;
 	//导航页码偏移量
 	private $page_offset;
 	//导航页码起始页
-	private $page_start;
+	private $page_start = 1;
 	//导航页码最大值
 	private $page_end;
 	//导航条
-	private $page_banner;
+	private $page_banner = "";
 	//单击导航跳转链接地址
 	private $url;
-
-	public function __construct(){
-		//$this->table = $table;
-		
-		$this->page_banner = "";
-		//$this->page = $p;
-		$this->page_size =5;
-		// $this->start = ($this->page-1)*$this->page_size;
-		// $this->total = DB::getTotal($this->table);
-		// $this->page_total = ceil($this->total/$this->page_size);
-		$this->show_page = 5;
+	private $where = null;
+	public function __construct($table,$p,$page_size,$totalNum){
+		$this->page_size = $page_size;
+		$this->table = $table;
+		$this->page = $p;
+		$this->start = ($this->page-1)*$this->page_size;
+		$this->total=$totalNum;
+		$this->page_total = ceil($this->total/$this->page_size);
 		$this->page_offset = ($this->show_page-1)/2;
-		$this->page_start = 1;
-		// $this->page_end = $this->page_total;
+		$this->page_end = $this->page_total;
 		
 	}
-	/**
-	 * 按分页显示数据
-	 */
-	public function getList($table,$p,$where=null){
-			//得到每页要显示的数据
-			$this->table = $table;
-			$this->page = $p;
-			$this->start = ($this->page-1)*$this->page_size;
-			$sql = "select * from ".$table.$where." LIMIT ".$this->start.",".$this->page_size;
-			$result = DB::fetchAll($sql);
-			return $result;
-		}
-	/**
-	 * 获得商品列表
-	 */
-	public function getProList($table,$p,$where=null,$order=null){
-		$this->where = $where;
-		$this->order = $order;
-		$this->table = $table;
-		$this->page = $p;
-		$this->start = ($this->page-1)*$this->page_size;
-		$sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName from imooc_pro p join imooc_cate c on p.cId = c.id".$where.$order." LIMIT ".$this->start.",".$this->page_size;
-		$result = DB::fetchAll($sql);
-		return $result;
-	}
-	/**
-	 * 构建一个三维数组，[id][i][albumPath]保存商品id以及对应的图片路径数组
-	 */
-	public function getProImage(){
-		$sql1 = "select id from imooc_pro";
-		$id = DB::fetchAll($sql1);
-		foreach ($id as $value) {
-			$sql2 = "select albumPath from imooc_album where pId=".$value['id'];
-			$album = DB::fetchAll($sql2);
-			$arr[$value['id']] = $album;
-		}
-		return $arr;
-	}
+	
 
-	/**
-	 * 获得图片以及商品信息，构建一个三维数组[商品id][商品名称][图片名称数组（可能多张图片）]
-	 */
-	public function getImageList($table,$p){
-		$this->table = $table;
-		$this->page = $p;
-		$this->start = ($this->page-1)*$this->page_size;
-		$sql1 = "select id,pName from imooc_pro order by id LIMIT ".$this->start.",".$this->page_size;
-		$products = DB::fetchAll($sql1);
-		foreach ($products as $product) {
-			$sql2 = "select albumPath from imooc_album where pId='".$product['id']."'";
-			$paths[$product['id']][$product['pName']] = DB::fetchAll($sql2);
-		}
-		return $paths;
-	}
-	/**
-	 * 获得订单列表数据
-	 */
-	public function getOrderList($table,$p,$where=null,$order=null){
-		$this->table = $table;
-		$this->page = $p;
-		$this->start = ($this->page-1)*$this->page_size;
-		$sql = "select * from imooc_indent i join imooc_indent_pro p on i.id=p.indentId ".$where.$order." LIMIT ".$this->start.",".$this->page_size;
-		$result = DB::fetchAll($sql);
-		if ($result) {
-			foreach ($result as $order) {
-				$sql1 = "select username from imooc_user where id='".$order['uId']."'";
-				$username = DB::fetchOne($sql1);
-				$sql2 = "select pName from imooc_pro where id='".$order['pId']."'";
-				$pName = DB::fetchOne($sql2);
-				$order['username'] = $username['username'];
-				$order['pName'] = $pName['pName'];
-				$res[] = $order;
-			}
-			return $res;
-		}else{
-			return false;
-		}
-		
-	}
 		/**
 		 * 页码导航条
 		 */
-		public function page($val=null,$ord=null){
-			$search = ($val==null) ? null : "&val=".$val;  //下一页和上一页url参数
-			$where = ($val==null) ? null : " where pName like '%".$val."%'";
-			$order = ($ord==null) ? null : "&order=".$ord; //下一页和上一页url参数
-			$this->total = DB::getTotal($this->table,$where);
-			$this->page_total = ceil($this->total/$this->page_size);
-			$this->page_end = $this->page_total;
-			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=showList&tab=".$_GET['tab'].$search.$order."&p=";
+		public function page($method,$val=null,$order=null){
+			$where = ($val == null) ? null : "&val=".$val;
+			$order = ($order == null) ? null : "&order=".$order;
+			$this->url = $_SERVER['PHP_SELF']."?controller=admin&method=".$method."&tab=".$_GET['tab'].$where.$order."&p=";
 			/**
 			 * 如果当前页为第一页，则首页和上一页不能点击
 			 */
@@ -202,6 +120,12 @@ class listModel{
 			$this->page_banner.="<input type='submit' value='确定' class='page-btn'>";
 			$this->page_banner.="</form>";
 			return $this->page_banner;
+		}
+		public function getStart(){
+			return $this->start;
+		}
+		public function getSize(){
+			return $this->page_size;
 		}
 }
 

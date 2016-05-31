@@ -6,6 +6,7 @@
 			if((isset($_SESSION['auth']))){
 				$this->auth = isset($_SESSION['auth'])?$_SESSION['auth']:"";
 			}
+			new filter();
 		}
 		//用户登入
 		public function login(){
@@ -112,17 +113,11 @@
 		 * 商品详情页展示
 		 */
 		public function detail(){
-			// $this->getUrl();
-			// var_dump($this->url);
-			$id = $_GET['id'];  //商品id
-			$cId = $_GET['cate'];  //分类id
 			$show = M('show');
-			$cName = $show->getCateName($cId); //商品名称数组
-			// print_r($cName);
-			// exit;
-			$proInfo = $show->getDetailProInfo($id);
-			$proOneImageName = $show->getDetailProImageOne($id);
-			$proImage = $show->getDetailProImage($id);
+			$cName = $show->getCateName(filter::$cId); //商品名称数组
+			$proInfo = $show->getDetailProInfo(filter::$id);
+			$proOneImageName = $show->getDetailProImageOne(filter::$id);
+			$proImage = $show->getDetailProImage(filter::$id);
 			VIEW::assign($proInfo);
 			VIEW::assign($cName);
 			VIEW::assign(array('proImage'=>$proImage,'bigPath'=>$proOneImageName,'auth'=>$this->auth));
@@ -150,15 +145,13 @@
 			if($this->auth == ""){
 				$this->showmessage("请先登录！","admin.php?controller=index&method=login&referer=".$url);
 			}
-			$pId = $_GET['pId'];
-			$num = $_GET['num'];
 			$model = M('index');
 			$uId = $model->getUserId($this->auth);
 			$show = M('show');
-			$proInfo = $show->getDetailProInfo($pId);
-			$image = $show->getDetailProImageOne($pId);
+			$proInfo = $show->getDetailProInfo(filter::$id);
+			$image = $show->getDetailProImageOne(filter::$id);
 			VIEW::assign($proInfo);
-			VIEW::assign(array('auth'=>$this->auth,'imgPath'=>$image,'num'=>$num,'uId'=>$uId));
+			VIEW::assign(array('auth'=>$this->auth,'imgPath'=>$image,'num'=>filter::$num,'uId'=>$uId));
 			VIEW::display('show/cleaning.html');
 		}
 		/**

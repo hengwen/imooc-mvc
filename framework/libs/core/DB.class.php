@@ -27,8 +27,8 @@ class DB{  //类名是全局变量，所以DB::$db可以访问静态属性，DB:
 		return self::$db->fetchResult($query);
 	}
 
-	public static function getTotal($table){
-		return self::$db->getTotal($table);
+	public static function getTotal($table,$where){
+		return self::$db->getTotal($table,$where);
 	}
 
 	public static function insert($table,$array){

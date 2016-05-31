@@ -1,16 +1,13 @@
 <?php
 	class adminController{
 		protected $auth; //保存当前登录的管理员
-		protected $listPath;  //保存后台点击左侧导航列表相关选项在右侧显示的页面文件名称
-		protected $addPath;    //保存后台点击左侧导航添加相关选项在右侧显示的页面文件名称
-		protected $table;  //保存要在后台显示的列表数据库表名
 		public function __construct(){
-			//session_start();
 			if(!(isset($_SESSION['auth']))&&(PC::$method!='login')){
 				$this->showmessage("请先登录！","admin.php?controller=admin&method=login");
 			}else{
 				$this->auth = isset($_SESSION['auth'])?$_SESSION['auth']:"";
 			}
+			new path();  //path类接收tab参数
 		}
 		/**
 		 * 登入页面
@@ -79,106 +76,38 @@
 				echo "<script>window.location.href='$url'</script>";
 		}
 		/**
-		 * 获得后台导航点击后显示的列表或添加表单路径和数据库表名称
-		 */
-		public function getTablePath($tab){
-			if ($tab == 1) {
-					$this->table = 'imooc_pro';
-					$this->listPath = 'proList.html';
-					$this->addPath = 'proAddForm.html';
-					$this->editPath = 'proEditForm.html';
-				}elseif($tab == 2){
-					$this->table = 'imooc_cate';
-					$this->listPath = 'cateList.html';
-					$this->addPath = 'cateAddForm.html';
-					$this->editPath = 'cateEditForm.html';
-				}elseif($tab == 3){
-					$this->table = 'imooc_user';
-					$this->listPath = 'userList.html';
-					$this->addPath = 'userAddForm.html';
-					$this->editPath = 'userEditForm.html';
-				}elseif($tab == 4){
-					$this->table = 'imooc_admin';
-					$this->listPath = 'adminList.html';
-					$this->addPath = 'adminAddForm.html';
-					$this->editPath = 'adminEditForm.html';
-				}elseif($tab == 5){
-					$this->table = 'imooc_album';
-					$this->listPath = 'imageList.html';
-					$this->addPath = 'imageAddForm.html';
-					//$this->editPath = 'adminEditForm.html';
-				}elseif($tab == 6){
-					$this->table = "imooc_indent";
-					$this->listPath = "orderList.html";
-					$this->editPath = "orderEditForm.html";
-				}
-		}
-		/**
 		 * 显示添加操作的表单页面
 		 */
 		public function showAddForm(){
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
-			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth));
+			VIEW::assign(array('path'=>path::$addPath,'auth'=>$this->auth));
 			VIEW::display('admin/index.html');
 		}
 
-	
 		/**
 		 * 显示列表以及页码
 		 */
 		public function showList(){
-			$p = $_GET['p'];
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
 			$list = M('list');
-			
 			//如果显示商品列表需要进行商品图片的查找
-			if ($tab==1) {
-				//如果有商品查询，则构建一个模糊查询语句的where部分
-				if (@$_GET['val']) {
-					$keywords = $_GET['val'];
-					$where = " where p.pName like '%$keywords%' ";
-				}else{
-					$keywords = null;
-					$where = null;
-				}
+			if (path::$tab==1) {
+				$where = (path::$keywords!==null) ? " where p.pName like '%".path::$keywords."%' " : null;
 				//如果有商品的排列，则构建一个order部分
-				if (@$ord = $_GET['order']) {
-					$ord = $_GET['order'];
-					$order = " order by p.".$ord;
-				}else{
-					$ord = null;
-					$order = null;
-				}
-				// $order =  @$_GET['order'] ? " order by p.".$_GET['order'] : null;
-				$result = $list->getProList($this->table,$p,$where,$order);
+				$order = (path::$ord!==null) ? " order by p.".path::$ord : null;
+				$result = $list->getProList(path::$table,path::$p,$where,$order);
 				$getProImage = $list->getProImage();  //所有商品图片以及对应的商品id
-				$page = $list->page($keywords,$ord);
-			}elseif($tab==5){
-				$result = $list->getImageList("imooc_pro",$p); //根据商品的个数分页显示
+				$page = $list->page(path::$keywords,path::$ord);
+			}elseif(path::$tab==5){
+				$result = $list->getImageList("imooc_pro",path::$p); //根据商品的个数分页显示
 				$page = $list->page();
-			}elseif($tab == 6){
+			}elseif(path::$tab == 6){
 				//如果有订单查询，则构建一个模糊查询语句的where部分
-				if (@$_GET['val']) {
-					$keywords = $_GET['val'];
-					$where = " where i.id like '%$keywords%' ";
-				}else{
-					$keywords = null;
-					$where = null;
-				}
+				$where = (path::$keywords!==null) ? " where i.id like '%".path::$keywords."%' " : null;
 				//如果有订单的排列，则构建一个order部分
-				if (@$ord = $_GET['order']) {
-					$ord = $_GET['order'];
-					$order = " order by i.".$ord;
-				}else{
-					$ord = null;
-					$order = null;
-				}
-				$result = $list->getOrderList($this->table,$p,$where,$order);  //获得订单列表
-				$page = $list->page($keywords,$ord);
+				$order = (path::$ord!==null) ? " order by i.".path::$ord : null;
+				$result = $list->getOrderList(path::$table,path::$p,$where,$order);  //获得订单列表
+				$page = $list->page(path::$keywords,path::$ord);
 			}else{
-				$result = $list->getList($this->table,$p);
+				$result = $list->getList(path::$table,path::$p);
 				$page = $list->page();
 			}
 			//显示列表
@@ -186,7 +115,7 @@
 				if (@$getProImage) {
 					VIEW::assign(array('proImage'=>$getProImage));
 				}
-				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>$this->listPath));
+				VIEW::assign(array('result'=>$result,'auth'=>$this->auth,'page'=>$page,'path'=>path::$listPath));
 				VIEW::display('admin/index.html');
 			}else{
 				$this->showmessage("显示列表失败","admin.php?controller=admin&method=index");
@@ -196,37 +125,33 @@
 		 * 后台添加操作
 		 */
 		public function doAdd(){
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
 			$adminadd = M('admin');
-			$result = $adminadd->adminAdd($this->table);
+			$result = $adminadd->adminAdd(path::$table);
 			if ($result) {
-				$this->showmessage("添加成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				$this->showmessage("添加成功！","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 			}else{
-				$this->showmessage('添加失败！',"admin.php?controller=admin&method=showAddForm&tab={$tab}");
+				$this->showmessage('添加失败！',"admin.php?controller=admin&method=showAddForm&tab=".path::$tab);
 			}
 		}
 		/**
 		 * 后台编辑操作
 		 */
 		public function editForm(){
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
 			$id = $_GET['id'];
 			$adminEditShow = M('admin');
-			if ($table="imooc_pro") {
+			if (path::$table="imooc_pro") {
 				$cate = $adminEditShow->getCates();
 			}
-			$result = $adminEditShow->adminEditShow($this->table,$id);
+			$result = $adminEditShow->adminEditShow(path::$table,$id);
 			if($result){
 				if ($cate) {
 					VIEW::assign(array("cates"=>$cate));
 				}
 				VIEW::assign($result);
-				VIEW::assign(array('auth'=>$this->auth,'path'=>$this->editPath));
+				VIEW::assign(array('auth'=>$this->auth,'path'=>path::$editPath));
 				VIEW::display('admin/index.html');
 			}else{
-				$this->showmessage("显示失败","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				$this->showmessage("显示失败","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 			}
 			
 		}
@@ -235,53 +160,45 @@
 		 */
 		public function doEdit(){
 			$id = $_GET['id'];
-			$tab = $_GET['tab'];
-			$this->getTablePath();
 			$edit = M('admin');
-			if($result= $edit->adminEdit($this->table,$id)){
-				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+			if($result= $edit->adminEdit(path::$table,$id)){
+				$this->showmessage("编辑成功","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 			}else{
-				$this->showmessage("编辑失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				$this->showmessage("编辑失败！","admin.php?controller=admin&method=showList&tab=".$tab."&p=1");
 				}
 			}
-
 		/**
 		 * 删除操作
 		 */
 		public function doDel(){
 			$id = $_GET['id'];
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
 			$del = M('admin');
 			//商品的删除操作
-			if ($this->table == "imooc_pro") {
+			if (path::$table == "imooc_pro") {
 				$delImg = $del->delImage($id);
-				if ($delImg&&$result= $del->delAdmin($this->table,$id)) {
-					$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				if ($delImg&&$result= $del->delAdmin(path::$table,$id)) {
+					$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 				}else{
-					$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+					$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 				}
 			}
 			//除了商品之外的删除操作
-			if($result= $del->delAdmin($this->table,$id)){
-				$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+			if($result= $del->delAdmin(path::$table,$id)){
+				$this->showmessage("删除成功！","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 			}else{
-				$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab={$tab}&p=1");
+				$this->showmessage("删除失败！","admin.php?controller=admin&method=showList&tab=".path::$tab."&p=1");
 			}
 		}
 		/**
 		 * 显示添加商品表单
 		 */
 		public function showProAddForm(){
-			$tab = $_GET['tab'];
-			$this->getTablePath($tab);
 			$admin = M('admin');
 			$cates = $admin->getCates();
-
 			if (!$cates) {
 				$this->showmessage("还没有分类项，请先添加分类！","admin.php?controller=admin&method=showAddForm&tab=2");
 			}
-			VIEW::assign(array('path'=>$this->addPath,'auth'=>$this->auth,'cates'=>$cates));
+			VIEW::assign(array('path'=>path::$addPath,'auth'=>$this->auth,'cates'=>$cates));
 			VIEW::display('admin/index.html');
 		}
 		/**
@@ -321,8 +238,6 @@
 			 */
 			public function doDelCate(){
 				$id = $_GET['id'];
-				$tab = $_GET['tab'];
-				$this->getTablePath($tab);
 				$del = M('admin');
 				$proIdArr = $del->getAllProId($id);
 				if ($proIdArr) { //如果分类下有商品则遍历删除
@@ -364,6 +279,43 @@
 				}else{
 					$this->showmessage("失败!!","admin.php?controller=admin&method=showList&tab=5&p=1");
 				}
+			}
+			/**
+			 * 后台统计模块显示
+			 */
+			public function showStatisticsList(){
+				$model = M('statistics');
+				$admin = M('admin');
+				$cates = $admin->getCates();
+				$totalNum = $model->getTotalNum();
+				$page = new page('imooc_indent_pro',path::$p,5,$totalNum);
+				$totalInfo = $model->getInfoTotalSta();
+				$result = $model->getStatistics(path::$type,$page->getStart(),$page->getSize());
+				$banner = $page->page("showStatisticsList");
+				if ($result&&$cates) {
+					VIEW::assign(array('result'=>$result,'cates'=>$cates,'auth'=>$this->auth,'path'=>path::$listPath,'page'=>$banner,'type'=>path::$type));
+					VIEW::assign($totalInfo);
+					VIEW::display("admin/index.html");
+				}
+				
+			}
+			/**
+			 * 后台统计模块ajax请求，按时间
+			 */
+			public function showStatisticsListAjax(){
+				$model = M('statistics');
+				$result[0] = $model->getInfoTotalSta();
+				$resultPro = $model->getStatistics(path::$type);
+				$res = array_merge($result,$resultPro);
+				echo json_encode($res);
+			}
+			/**
+			 * 后台统计模块ajax请求，统计列表
+			 */
+			public function showStatisticsListAjaxByRole(){
+				$model = M('statistics');
+				$result = $model->getStatistics(path::$type);
+				echo json_encode($result);
 			}
 		
 	}

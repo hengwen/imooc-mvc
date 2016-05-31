@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-18 09:25:36
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-26 13:46:39
          compiled from "tpl/admin/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:178853321157399a69670102-23787716%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cddbf8473d851c5cc0e76c7a5ec57d8e4f2965f7' => 
     array (
       0 => 'tpl/admin/index.html',
-      1 => 1463555308,
+      1 => 1464263194,
       2 => 'file',
     ),
   ),
@@ -49,9 +49,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 			</span>
 			<a href="admin.php" class="home">首页</a>
-			<a href="#" class="advance">前进</a>
-			<a href="#" class="back">后退</a>
-			<a href="#" class="refresh">刷新</a>
+			<a href="javascript:history.go(1);" class="advance" id="advance">前进</a>
+			<a href="javascript:history.go(-1);" class="back" id="back">后退</a>
+			<a href="javascript:void(0);" class="refresh" id="refresh">刷新</a>
 			<a href="admin.php?controller=admin&method=logout" class="out">退出</a>
 		</div>
 	</div>
@@ -99,6 +99,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<dl id="menu6">
 							<!-- <dd><a href="admin.php?controller=admin&method=showAddForm&tab=5">添加管理员</a></dd> -->
 							<dd><a href="admin.php?controller=admin&method=showList&tab=5&p=1">商品图片列表</a></dd>	
+						</dl>
+					</li>
+					<li class="list-item">
+						<h3 onclick="show('menu7','change7')"><span id="change7">+</span>商品销售统计</h3>
+						<dl id="menu7">
+							<dd><a href="admin.php?controller=admin&method=showStatisticsList&tab=7&p=1">统计列表</a></dd>	
 						</dl>
 					</li>
 				</ul>

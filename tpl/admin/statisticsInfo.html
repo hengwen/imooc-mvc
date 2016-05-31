@@ -1,0 +1,97 @@
+<div class="table-op-top">
+      <div class="total" id="total">
+            <table width="100%" id="show-total">
+                  <tr>
+                        <th>销售笔数</th>
+                        <th>销售额</th>
+                        <th>销售毛利</th>
+                        <th>毛利率</th>
+                        {if $totalCount neq null}
+                              <td width="30%"><span class="bold">销售额最高的商品：ipad</span></td>
+                        {else}
+                              <td width="30%"><span class="bold">销售额最高的商品：</span></td>
+                        {/if}
+                  </tr>
+                  <tr>
+                        {if $totalCount neq null}
+                              <td class="bold">{$totalCount}</td>
+                              <td class="bold red">{$total}</td>
+                              <td class="bold red">{$total*0.2}</td>
+                              <td class="bold red">{0.2|string_format:'%.2f'}</td>
+                              <td><span class="bold">购买额最高的用户：{$username}</span></td>
+                        {else}
+                              <td class="bold"></td>
+                              <td class="bold red"></td>
+                              <td class="bold red"></td>
+                              <td class="bold red"></td>
+                              <td><span class="bold">购买额最高的用户：</span></td>
+                        {/if}
+                  </tr>
+            </table>
+      </div>
+      <div class="table-op">
+            <div class="sort-by" id="sort-by">
+                  <a href="javascript:void(0);" value="product" class="current">按商品</a>
+                  <a href="javascript:void(0);" value="user">按用户</a>
+            </div>
+            <div class="sort-select">
+                  <label>排序：
+                        <span class="select-box">
+                              <select id="all-sort">
+                                    <option value="">请选择</option>
+                                    <option value="">按数量</option>
+                                    <option value="user">按金额</option>
+                              </select>
+                        </span>
+                  </label>
+                  <label>按商品分类：
+                        <span class="select-box">
+                              <select id="all-cate">
+                                    <option value="">请选择</option>
+                                    {if $type eq 1}
+                                          {foreach item=cate from=$cates}
+                                                 <option value={$cate.id}>{$cate.cName}</option>
+                                          {/foreach}
+                                    {/if}
+                              </select>
+                        </span>
+                  </label>
+                  <label>搜索：<input type="text" name="search" class="search" id="all-search"></label>
+            </div>
+            
+      </div>
+</div>
+<div id="list-box">
+      <table class="pd-manage">
+            <tr>
+                  <th width="5%">编号</th>
+                  <th width="10%">商品编号</th>
+                  <th width="30%">商品名称</th>
+                  <th width="10%">销售量</th>
+                  <th width="10%">销售额</th>
+            </tr>
+            {if $result neq null}
+                  {foreach key=i item=list from=$result}
+                        <tr>
+                              <td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label>{$i+1}</td>
+                              <td>
+                                    {$list.pId}
+                              </td>
+                              <td>
+                                    {$list.pName}
+                              </td>
+                              <td>{$list['count']}</td>
+                              <td>{$list['money']}</td>
+                        </tr>
+                  {/foreach}
+            {else}
+                   <tr>
+                        <td><label><input type="checkbox" name="checkbox" class="pd-list-che"></label></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                  </tr>
+            {/if}
+      </table>       
+</div>

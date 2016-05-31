@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:22:53
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-21 05:21:24
          compiled from "tpl/admin/proAddForm.html" */ ?>
 <?php /*%%SmartyHeaderCode:83619294357399f7de7cae6-07430977%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4593a6a6d6d6bec6e12af1a8982d39e4294d07a2' => 
     array (
       0 => 'tpl/admin/proAddForm.html',
-      1 => 1463149078,
+      1 => 1463408246,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57399f7e04a058_36170330',
   'variables' => 
   array (
     'cates' => 0,
     'cate' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57399f7e04a058_36170330',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57399f7e04a058_36170330')) {function content_57399f7e04a058_36170330($_smarty_tpl) {?>
 <form class="admin-add pro-add" action="admin.php?controller=admin&method=addPro&tab=1" method="post" enctype="multipart/form-data" >

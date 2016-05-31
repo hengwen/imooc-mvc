@@ -117,7 +117,7 @@ body{
 }
 .nav-list{
 	min-height: 600px;
-	padding:10px 8px 200px 8px;
+	padding:10px 8px 0px 8px;
 	background: #999;
 	font-size: 14px;
 	color:#fff;
@@ -161,9 +161,8 @@ body{
 	
 }
 .table-op-top{
-	height: 30px;
+	@extend %clearfix;
 	line-height: 30px;
-	margin-bottom: 30px;
 	.add{
 		float: left;
 		a{
@@ -177,8 +176,36 @@ body{
 		}
 	}
 }
+.sort-by{
+		float: left;
+		font-size:0;
+		border:1px solid #5F94F7;
+		border-radius:5px;
+		height: 32px;
+		a{
+			display: inline-block;
+			width:80px;
+			height: 30px;
+			font-size: 14px;
+			color:#5F94F7;
+			background-color: #fff;
+			text-align: center;
+			&:hover{
+				color:#fff;
+				background:#5F94F7;
+				text-decoration: none;
+			}
+		}
+		.current{
+			color:#fff;
+			background:#5F94F7;
+		}
+	}
 .table-op{
-	@extend %fr;
+	float:right;
+	@extend %clearfix;
+	margin-bottom:10px;
+	
 	input{
 		width: 150px;
 		height: 30px;
@@ -189,10 +216,15 @@ body{
 		background: #eee;
 		margin-right: 20px;
 	}
+	
+	.sort-select{
+		float: right;
+	}
 }
 table{
 	font-size: 14px;
 	border-collapse: collapse;
+	margin-top:10px;
 	caption{
 		font-size: 20px;
 		margin:20px 0;
@@ -437,6 +469,77 @@ footer{
 	}
 	
 }
+.top-time{
+	width:100%;
+	a{
+		display: inline-block;
+		width: 100px;
+		height: 45px;
+		font-size:18px;
+		border:1px solid #ccc;
+		background: #ddd;
+		text-align: center;
+		line-height: 45px;
+		&:hover{
+			color:#00f;
+			text-decoration: none;
+		}
+	}
+	.current{
+		background:#fff;
+		border-bottom:none;
+	}
+	h3{
+		float:left;
+		height: 45px;
+	}
+	.show-time-wrap{
+		@extend %clearfix;
+		padding-top:10px;
+		.show-time{
+			padding-top:10px;
+			font-size: 18px;
+		}
+	}
+	.show-hide{
+			float: right;
+			font-size: 14px;
+			height: 35px;
+			padding:0 10px;
+			line-height: 35px;
+			color:#333;
+			background: #eee;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			&:hover{
+				background: #fff;
+				text-decoration: none;
+			}
+		}
+}
+.total{
+	margin-top:10px;
+	
+	table{
+		border:1px solid #ccc;
+		margin-bottom: 20px;
+	}
+	td,th{
+		border:none;
+		border-right:1px solid #ccc;
+		background: #f1f1f1;
+	}
+	.bold{
+		font-size: 18px;
+	}
+	.red{
+		color:#f00;
+	}
+}
+.box{
+	width: 968px;
+}
+
 
 
 

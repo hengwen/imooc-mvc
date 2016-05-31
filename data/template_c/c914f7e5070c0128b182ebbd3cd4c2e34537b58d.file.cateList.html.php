@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-16 12:13:59
+<?php /* Smarty version Smarty-3.1-DEV, created on 2016-05-26 08:54:11
          compiled from "tpl/admin/cateList.html" */ ?>
 <?php /*%%SmartyHeaderCode:187175027057399d672cad01-21358565%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c914f7e5070c0128b182ebbd3cd4c2e34537b58d' => 
     array (
       0 => 'tpl/admin/cateList.html',
-      1 => 1463278216,
+      1 => 1463408246,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1-DEV',
+  'unifunc' => 'content_57399d67353879_60184225',
   'variables' => 
   array (
     'result' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'page' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1-DEV',
-  'unifunc' => 'content_57399d67353879_60184225',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57399d67353879_60184225')) {function content_57399d67353879_60184225($_smarty_tpl) {?><div class="table-op-top">
 						<div class="add">

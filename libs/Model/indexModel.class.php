@@ -64,6 +64,7 @@
 			$arr1['indentTime'] = date("Y-m-d",time());
 			$arr1['uId'] = $post['uId'];
 			$arr1['indentMon'] = $post['totle'];
+			$arr1['active'] = 1;
 			$result = DB::insert('imooc_indent',$arr1);
 			if ($result) {
 				$arr2['indentId'] = $result;
